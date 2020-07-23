@@ -13,7 +13,6 @@ export default class StartBar extends Component {
                         </div>
                     </div>
                     <div className="icons-middle">
-                        
                     </div>
                     <DateTime/>
                 </div>
