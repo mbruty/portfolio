@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.chrome-content-box *{
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+.chrome-content-box i{
+  margin-left: 2%;
+  position: relative;
+  cursor: pointer;
+  top: 5px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.chrome-content-box h2{
+  font-size: 1.2em;
+}
+
+.chrome-content-box .App{
+  height: 100vh;
+  width: inherit;
+}
+
+.chrome-content-box .content-box-mob{
+  background-color: #263238;
+  height: 80%;
+  width: 100%;
+  position: relative;
+  margin-bottom: -2.5%;
+  border-bottom: 5px solid #546e7a;
+}
+
+.chrome-content-box .info-box-mob{
+  background-color: teal;
+  height: 100%;
+  width: 100%;
+}
+
+.chrome-content-box .bar-pannel{
+  width: 100%;
+  height: 95%;
+  position: absolute;
+  bottom: 0;
+  display:-moz-box; /* Firefox */
+  display:-webkit-box; /* Safari and Chrome */
+  display:box;
+  -webkit-box-align:end;
+}
+
+.chrome-content-box .content-box{
+  background-color: #263238;
+  height: 100%;
+  width: 80%;
+  float: left;
+  border-right: 5px solid #546e7a;
+  position: relative;
+}
+
+.chrome-content-box .info-box{
+  background-color: teal;
+  height: 100%;
+  width: calc(20% - 5px);
+  float: right;
+}
+
+.chrome-content-box .bar-pannel{
+  width: 90%;
+  height: 95%;
+  position: absolute;
+  bottom: 0;
+  margin-left: 5%;
+  display:-moz-box; /* Firefox */
+  display:-webkit-box; /* Safari and Chrome */
+  display:box;
+  -webkit-box-align:end;
+
+}
+  
+
+.chrome-content-box .algo-select{
+  height: 4%;
+  width: 80%;
+  margin-left: 5%;
+  padding-right: 2%;
+  outline:0px;
+  border: none;
+  background-color: #78909c;
+}
+
+.chrome-content-box input{
+  margin-top: 4%;
+  background-color: #546e7a;
+  border: none;
+  margin-left: 5%;
+  width:90%;
+  height: 3%;
+}
+
+.chrome-content-box input:focus{
+  outline: none;
+}
+
+.chrome-content-box .bar {
+  background-color: white;
+  border-radius: 2px 2px 0px 0px;
+  display: inline-block;
+  align-self: end;
+  margin-right: 0.15%;
+  margin-left: 0.15%;
+  display: flex;
+}
+
+.chrome-content-box a.button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #FFFFFF;
+  margin: 0.5em 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.chrome-content-box a.button:hover{
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.chrome-content-box table.darkTable {
+  border: 2px solid #000000;
+  background-color: #4A4A4A;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  border-collapse: collapse;
+}
+.chrome-content-box table.darkTable td, .chrome-content-box table.darkTable th {
+  border: 1px solid #4A4A4A;
+  padding: 3px 2px;
+}
+.chrome-content-box table.darkTable tbody td {
+  font-size: 13px;
+  color: #E6E6E6;
+}
+.chrome-content-box table.darkTable tr:nth-child(even) {
+  background: #888888;
+}
+.chrome-content-box table.darkTable thead {
+  background: #000000;
+  border-bottom: 3px solid #000000;
+}
+.chrome-content-box table.darkTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #E6E6E6;
+  text-align: center;
+  border-left: 2px solid #4A4A4A;
+}
+.chrome-content-box table.darkTable thead th:first-child {
+  border-left: none;
+}
+
+.chrome-content-box table.darkTable tfoot {
+  font-size: 12px;
+  font-weight: bold;
+  color: #E6E6E6;
+  background: #000000;
+  background: -moz-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+  background: -webkit-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+  background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);
+  border-top: 1px solid #4A4A4A;
+}
+.chrome-content-box table.darkTable tfoot td {
+  font-size: 12px;
+}
