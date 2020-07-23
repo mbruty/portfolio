@@ -4,13 +4,13 @@ export default class DateTime extends Component {
     constructor(props) {
         super(props);
         this.state = {date: new Date()};
-        this.timeout = setTimeout(this.updateDate(), 5000);
+        setInterval(() => { this.updateDate() }, 500);
         this.updateDate = this.updateDate.bind(this);
     }
 
     updateDate(){
         let newDate = new Date();
-        if(newDate.getMinutes() != this.state.date.getMinutes()){
+        if(newDate.getMinutes() !== this.state.date.getMinutes()){
             this.setState({date: newDate});
         }
     }

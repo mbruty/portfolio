@@ -1,3 +1,103 @@
+/* Desktop */
+
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+		 -moz-user-select: none; /* Old versions of Firefox */
+		  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+}
+.desktop{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #58a5cc;
+}
+
+.drop{
+	width: 4%;
+	height: 10%;
+}
+
+.desktop table{
+	width: 100%;
+	height: 95%;
+}
+
+.desktop table tr{
+	border: 1px solid red;
+}
+
+/* Dektop Item */
+
+.icon{
+	margin-top: 10%;
+	margin-bottom: -25%;
+}
+.icon .material-icons{
+	font-size: 3.5em;
+	margin-left: 10%;
+	text-align: center;
+	pointer-events: none;
+}
+
+.icon h3{
+	margin-top: -2%;
+	font-family: 'Segoe UI';
+	text-align: center;
+	pointer-events: none;
+}
+
+/* Chrome window */
+.chrome-box{
+	position: absolute;
+	background-color: white;
+	width: 700px;
+	min-width: 400px;
+	min-height: 400px;
+	max-height: 95.5%;
+	height: 800px;
+	left: 20%;
+	right: 20%;
+	resize: both;
+	overflow: auto;
+}
+
+.chrome-box .handle, .chrome-box-fs .handle {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5%;
+	min-height: 40px;
+	background-color:grey;
+	cursor: grab;
+}
+
+.chrome-box .chrome-content, .chrome-box-fs .chrome-content{
+	position: relative;
+	background-color: black;
+	height: 99%;
+	width: 100%;
+	overflow: scrol;
+}
+
+.chrome-box-fs{
+	position: absolute;
+	background-color: white;
+	width: 100%;
+	max-height: 95.5%;
+	top: 0;
+	height: 96%;
+	overflow: auto;
+}
+
+
+/* Taskbar */
 .taskbar {
 	position: fixed;
 	bottom: 0;
@@ -11,13 +111,6 @@
 	height: 43px;
 	display: inline-block;
 }
-
-.taskbar .icons-left a {
-	height: 43px;
-	width: 48px;
-	position: relative;
-}
-
 .taskbar .icons-left i {
 	position: absolute;
 	top: 50%;
@@ -30,11 +123,12 @@
 .taskbar .icons-left a {
 	display: table-cell;
 	border-bottom: 2px solid transparent;
-	width: 16%;
+	width: 14%;
+	position: relative;
 	cursor: pointer;
 }
 .taskbar .icons-left a .material-icons{
-	margin-top: -13%;
+	top: 22px;
 	font-size: 1.5rem;
 }
 
@@ -42,14 +136,17 @@
 	background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+.taskbar .icons-left a:hover .material-icons{
+	color: #65c2f7;
+}
 
 .taskbar .icons-left .search {
 	display: table-cell;
-	box-sizing: border-box;
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
 .taskbar .icons-left .search input {
-	width: 120%;
+	width: 21em;
 	padding: 12px 10px;
 	background-color: #3a3a3a;
 	border: 1px solid #4a4a4a;
@@ -69,8 +166,8 @@
 
 .taskbar .icons-left .search .material-icons {
 	position: relative;
-	margin-top: -10%;
-	margin-left: -40%;
+	left: 25px;
+	top: -20px;
 	font-size: 2rem;
 }
 
@@ -81,7 +178,6 @@
 
 .taskbar .icons-middle{
 	position: fixed;
-	
 	left: 22%;
 	width: 60%;
 	height: 43px;
@@ -104,6 +200,7 @@
 
 .taskbar .right .datetime span {
 	display: block;
+	font-family: 'Segoe UI';
 	text-align: center;
 	margin-top: 5px;
 	font-size: 11.3px;
