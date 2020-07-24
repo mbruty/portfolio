@@ -10,7 +10,7 @@ export default class InfoBox extends Component {
     }
 
     render() {
-        if(this.props.width <= 750){
+        if(this.props.width <= 845){
             return(
                 <div className="info-box-mob">
                     <h2>Algorithm</h2>

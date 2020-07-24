@@ -5,7 +5,7 @@ export default class ContentBox extends Component {
     render() {
         const data = this.props.data;
         const elementWidth = 100 / data.length -0.3;
-        if(this.props.width <= 750){
+        if(this.props.width <= 845){
             return (
                 <div className="content-box-mob">
                     <div className="bar-pannel">
