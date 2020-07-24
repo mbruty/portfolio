@@ -13,7 +13,6 @@ export default class ChromeWindow extends Component {
             width: 700,
             height: 1000,
         }
-        this.mainDiv = React.createRef();
         this.mouseDown = this.mouseDown.bind(this);
         this.mouseUp = this.mouseUp.bind(this);
         this.handleResize = this.handleResize.bind(this);
@@ -67,7 +66,7 @@ export default class ChromeWindow extends Component {
                             position={null}
                             grid={[1, 1]}
                             scale={1}>
-                        <div className="chrome-box" ref={this.mainDiv} style={{zIndex: this.props.z}} onClick={this.bringToFront}>
+                        <div className="chrome-box" style={{zIndex: this.props.z}} onClick={this.bringToFront}>
                             <div id="handle" className="handle" style={{cursor: this.state.grabbingCursor}}
                                 onMouseDown={this.mouseDown} onMouseUp={this.mouseUp}>
                                     <h3>{this.props.target}</h3>
