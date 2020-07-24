@@ -1,5 +1,9 @@
 /* Desktop */
 
+*{
+	font-family: 'Segoe UI';
+}
+
 .noselect {
 	-webkit-touch-callout: none; /* iOS Safari */
 	  -webkit-user-select: none; /* Safari */
@@ -8,6 +12,10 @@
 		  -ms-user-select: none; /* Internet Explorer/Edge */
 			  user-select: none; /* Non-prefixed version, currently
 									supported by Chrome, Edge, Opera and Firefox */
+}
+
+.clickthrough{
+	pointer-events: none;
 }
 .desktop{
 	position: fixed;
@@ -91,7 +99,7 @@
 }
 
 .handle .chrome-btn:hover{
-	background-color: #35363a;
+	background-color: #4d4d4d;
 	-webkit-transition: background-color 50ms linear;
     -ms-transition: background-color 50ms linear;
     transition: background-color 50ms linear;
@@ -129,7 +137,83 @@
 	overflow: auto;
 }
 
+/*Start modal*/
+.start-modal{
+	position: absolute;
+	width: 30%;
+	height: 65%;
+	bottom: 42px;
+	left: 0;
+	backdrop-filter: blur(8px);
+	background-color: rgba(54, 54, 54, 0.9);
+}
 
+.start-modal .left-bar{
+	float: left;
+	height: 100%;
+	width: 9%;
+	background-color: rgba(34, 34, 34, 0.493);
+}
+
+.start-modal .left-bar .icons{
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+.start-modal .left-bar .icons .i-container{
+	background-color: rgba(34, 34, 34, 0);
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.start-modal .left-bar .icons .i-container:hover{
+	background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.start-modal .left-bar .icons .i-container i{
+	padding-top: 8px;
+	font-size: 2em;
+	pointer-events: none;
+	color: white;
+}
+
+/* Settings Modal */
+
+.settings-modal{
+	position: absolute;
+	width: 40%;
+	height: 8%;
+	bottom: 8%;
+	left: 9%;
+	background-color: #2f2f2f;
+	border: 1px solid black;
+}
+
+.settings-modal .modal-item{
+	position: relative;
+	width: 100%;
+	height: 80%;
+	cursor: pointer;
+	border: none;
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.settings-modal .modal-item:hover{
+	background-color: rgba(255, 255, 255, 0.1);
+	-webkit-transition: background-color 50ms linear;
+    -ms-transition: background-color 50ms linear;
+	transition: background-color 50ms linear;
+	border: 1px solid rgba(255, 255, 255, 1);
+	-webkit-transition: background-color 50ms linear;
+    -ms-transition: background-color 50ms linear;
+    transition: background-color 50ms linear;
+}
 /* Taskbar */
 .taskbar {
 	position: fixed;
