@@ -56,13 +56,13 @@
 .chrome-box{
 	position: absolute;
 	background-color: white;
-	width: 1200px;
+	width: 70%;
 	min-width: 400px;
 	min-height: 400px;
 	max-height: 95.5%;
 	height: 800px;
-	left: 20%;
-	right: 20%;
+	left: 15%;
+	top: 5%;
 	resize: both;
 	overflow: auto;
 }
@@ -98,6 +98,7 @@
 	height: 40px;
 	background-color:#202124;
 	cursor: grab;
+	z-index: 1;
 }
 
 .chrome-box .chrome-content, .chrome-box-fs .chrome-content{

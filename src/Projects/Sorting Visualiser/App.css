@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-.chrome-content-box *{
+#sorting-vis *{
   color: white;
   font-family: 'Lato', sans-serif;
   font-size: 1em;
   text-align: center;
 }
-
-.chrome-content-box i{
+#sorting-vis .code{
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+}
+#sorting-vis i{
   margin-left: 2%;
   position: relative;
   cursor: pointer;
@@ -20,16 +23,16 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.chrome-content-box h2{
+#sorting-vis h2{
   font-size: 1.2em;
 }
 
-.chrome-content-box .App{
+#sorting-vis .App{
   height: 100vh;
   width: inherit;
 }
 
-.chrome-content-box .content-box-mob{
+#sorting-vis .content-box-mob{
   background-color: #263238;
   height: 80%;
   width: 100%;
@@ -38,13 +41,13 @@
   border-bottom: 5px solid #546e7a;
 }
 
-.chrome-content-box .info-box-mob{
+#sorting-vis .info-box-mob{
   background-color: teal;
   height: 100%;
   width: 100%;
 }
 
-.chrome-content-box .bar-pannel{
+#sorting-vis .bar-pannel{
   width: 100%;
   height: 95%;
   position: absolute;
@@ -55,7 +58,7 @@
   -webkit-box-align:end;
 }
 
-.chrome-content-box .content-box{
+#sorting-vis .content-box{
   background-color: #263238;
   height: 100%;
   width: 80%;
@@ -64,14 +67,14 @@
   position: relative;
 }
 
-.chrome-content-box .info-box{
+#sorting-vis .info-box{
   background-color: teal;
   height: 100%;
   width: calc(20% - 5px);
   float: right;
 }
 
-.chrome-content-box .bar-pannel{
+#sorting-vis .bar-pannel{
   width: 90%;
   height: 95%;
   position: absolute;
@@ -85,7 +88,7 @@
 }
   
 
-.chrome-content-box .algo-select{
+#sorting-vis .algo-select{
   height: 4%;
   width: 80%;
   margin-left: 5%;
@@ -95,7 +98,7 @@
   background-color: #78909c;
 }
 
-.chrome-content-box input{
+#sorting-vis input{
   margin-top: 4%;
   background-color: #546e7a;
   border: none;
@@ -104,11 +107,11 @@
   height: 3%;
 }
 
-.chrome-content-box input:focus{
+#sorting-vis input:focus{
   outline: none;
 }
 
-.chrome-content-box .bar {
+#sorting-vis .bar {
   background-color: white;
   border-radius: 2px 2px 0px 0px;
   display: inline-block;
@@ -118,7 +121,7 @@
   display: flex;
 }
 
-.chrome-content-box a.button {
+#sorting-vis a.button {
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid #FFFFFF;
@@ -131,12 +134,12 @@
   transition: all 0.2s;
 }
 
-.chrome-content-box a.button:hover{
+#sorting-vis a.button:hover{
   color: #000000;
   background-color: #FFFFFF;
 }
 
-.chrome-content-box table.darkTable {
+#sorting-vis table.darkTable {
   border: 2px solid #000000;
   background-color: #4A4A4A;
   width: 100%;
@@ -144,33 +147,33 @@
   text-align: center;
   border-collapse: collapse;
 }
-.chrome-content-box table.darkTable td, .chrome-content-box table.darkTable th {
+#sorting-vis table.darkTable td, #sorting-vis table.darkTable th {
   border: 1px solid #4A4A4A;
   padding: 3px 2px;
 }
-.chrome-content-box table.darkTable tbody td {
+#sorting-vis table.darkTable tbody td {
   font-size: 13px;
   color: #E6E6E6;
 }
-.chrome-content-box table.darkTable tr:nth-child(even) {
+#sorting-vis table.darkTable tr:nth-child(even) {
   background: #888888;
 }
-.chrome-content-box table.darkTable thead {
+#sorting-vis table.darkTable thead {
   background: #000000;
   border-bottom: 3px solid #000000;
 }
-.chrome-content-box table.darkTable thead th {
+#sorting-vis table.darkTable thead th {
   font-size: 15px;
   font-weight: bold;
   color: #E6E6E6;
   text-align: center;
   border-left: 2px solid #4A4A4A;
 }
-.chrome-content-box table.darkTable thead th:first-child {
+#sorting-vis table.darkTable thead th:first-child {
   border-left: none;
 }
 
-.chrome-content-box table.darkTable tfoot {
+#sorting-vis table.darkTable tfoot {
   font-size: 12px;
   font-weight: bold;
   color: #E6E6E6;
@@ -180,6 +183,6 @@
   background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);
   border-top: 1px solid #4A4A4A;
 }
-.chrome-content-box table.darkTable tfoot td {
+#sorting-vis table.darkTable tfoot td {
   font-size: 12px;
 }

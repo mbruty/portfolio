@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
 import SortingVis from '../../Projects/Sorting Visualiser/App';
+import UrlShortener from '../../Projects/URL Shortener/App';
 import ReactResizeDetector from 'react-resize-detector';
 export default class ChromeWindow extends Component {
     constructor(props) {
@@ -10,15 +11,20 @@ export default class ChromeWindow extends Component {
             fullscreenIcon: 'fullscreen',
             grabbingCursor: 'grab',
             width: 700,
-            height: 1000
+            height: 1000,
         }
+        this.mainDiv = React.createRef();
         this.mouseDown = this.mouseDown.bind(this);
         this.mouseUp = this.mouseUp.bind(this);
         this.handleResize = this.handleResize.bind(this);
+        this.close = this.close.bind(this);
         this.maximize = this.maximize.bind(this);
+        this.bringToFront = this.bringToFront.bind(this);
     }
 
-    mouseDown(){
+    mouseDown(e){
+        //Bring to front
+        this.bringToFront();
         this.setState({...this.state, grabbingCursor: 'grabbing'});
     }
     mouseUp(){
@@ -27,20 +33,29 @@ export default class ChromeWindow extends Component {
     handleResize(w, h) {
         this.setState({...this.state, width: w, height: h});
     }
+    close(){
+        this.props.closeChrome(this.props.target);
+    }
     maximize() {
         if(this.state.fullscreen) this.setState({...this.state, fullscreen: false, fullscreenIcon: 'fullscreen'});
-        else this.setState({...this.state, fullscreen: true, fullscreenIcon: 'fullscreen_exit'});
+        else this.setState({...this.state, fullscreen: true, fullscreenIcon: 'fullscreen_exit',
+         width: window.innerWidth, height: window.innerHeight - 43});
+    }
+    bringToFront(){
+        this.props.bringToFront({id: this.props.target, z: this.props.z})
     }
     renderContent(toRender) {
-        console.log(toRender);
         switch(toRender){
             case 'Sorting Vis':
-                return (<SortingVis width={this.state.width} height={this.state.height}/>)
+                return (<div id="sorting-vis"><SortingVis width={this.state.width} height={this.state.height}/></div>)
+            case 'URL Shortener':
+                return (<div id="url-shortener"><UrlShortener width={this.state.width} height={this.state.height}/></div>)
             default:
                 break;
         }
     }
     render() {
+        console.log(this.state.top)
         if(!this.props.show) return null;
         else if (!this.state.fullscreen) {
             return (
@@ -51,14 +66,11 @@ export default class ChromeWindow extends Component {
                             defaultPosition={{x: 0, y: 0}}
                             position={null}
                             grid={[1, 1]}
-                            scale={1}
-                            onStart={this.handleStart}
-                            onDrag={this.handleDrag}
-                            onStop={this.handleStop}>
-                        <div className="chrome-box">
+                            scale={1}>
+                        <div className="chrome-box" ref={this.mainDiv} style={{zIndex: this.props.z}} onClick={this.bringToFront}>
                             <div id="handle" className="handle" style={{cursor: this.state.grabbingCursor}}
                                 onMouseDown={this.mouseDown} onMouseUp={this.mouseUp}>
-                                    <div className="chrome-x"><i className="material-icons" onClick={this.props.closeChrome}>close</i></div>
+                                    <div className="chrome-x"><i className="material-icons" onClick={this.close}>close</i></div>
                                     <div className="chrome-btn"><i className="material-icons" onClick={this.maximize}>{this.state.fullscreenIcon}</i></div>
                                     <div className="chrome-btn"><i className="material-icons">minimize</i></div>
                                 </div>
@@ -71,7 +83,6 @@ export default class ChromeWindow extends Component {
             )
         }
         else{
-            console.log({width: this.state.width, height: this.state.height});
             return(
                 <div className="chrome-box-fs">
                         <div id="handle" className="handle" style={{cursor: 'default'}}>
@@ -80,7 +91,7 @@ export default class ChromeWindow extends Component {
                             <div className="chrome-btn"><i className="material-icons">minimize</i></div>
                         </div>
                         <div className="chrome-content-box">
-                            <SortingVis width={this.state.width} height={window.innerHeight - 43}/>
+                            {this.renderContent(this.props.target)}
                         </div>
                 </div>
             )
