@@ -2,7 +2,11 @@
     {
         "name": "Sorting Algorithm Visualiser",
         "shortName": "Sorting Vis",
-        "icon":  "assessment",
-        "id": 1
+        "icon":  "assessment"
+    },
+    {
+        "name": "URL Shortener",
+        "shortName": "URL Shortener",
+        "icon": "link"
     }
 ]

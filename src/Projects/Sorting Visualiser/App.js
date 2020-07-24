@@ -103,7 +103,7 @@ class App extends React.Component {
 
     render() {
         return ( 
-			<div className="App">
+			<div className="App" style={{height: `${this.props.height - 40}px`}}>
 				<ContentBox data={this.state.data} width={this.props.width} height={this.props.height}/>
 				<InfoBox onChange={this.onChange} width={this.props.width} height={this.props.height} handleChange={this.handleChange} showState={this.showState} sort={this.sort} reset={this.reset}/>
 			</div>

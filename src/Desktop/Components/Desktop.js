@@ -10,10 +10,11 @@ export default class Desktop extends Component {
         this.state = {
             array: null,
             loaded: false,
-            showChrome: true,
-            windowToShow: null
+            showChrome: false,
+            windowToShow: null,
         }
         this.showWindow = this.showWindow.bind(this);
+        this.closeChrome = this.closeChrome.bind(this);
     }
 
     showWindow(e){
@@ -29,6 +30,9 @@ export default class Desktop extends Component {
         //reorder(this.state.array, source, destination);
     }
 
+    closeChrome(){
+        this.setState({...this.state, showChrome: false, windowToShow: null});
+    }
     componentDidMount(){
         let arr = [];
         for(let i = 0; i < 9; ++i){
@@ -51,7 +55,7 @@ export default class Desktop extends Component {
         if(!this.state.loaded) return null;
         return (
             <div className="desktop">
-                <ChromeWindow show={this.state.showChrome} target={this.state.target}/>
+                <ChromeWindow show={this.state.showChrome} target={this.state.windowToShow} closeChrome={this.closeChrome}/>
                 <table>
                     <DragDropContext onDragEnd={this.onDragEnd}>
                     {this.state.array.map((row, idx) => (
