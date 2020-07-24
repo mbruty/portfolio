@@ -70,6 +70,7 @@ export default class ChromeWindow extends Component {
                         <div className="chrome-box" ref={this.mainDiv} style={{zIndex: this.props.z}} onClick={this.bringToFront}>
                             <div id="handle" className="handle" style={{cursor: this.state.grabbingCursor}}
                                 onMouseDown={this.mouseDown} onMouseUp={this.mouseUp}>
+                                    <h3>{this.props.target}</h3>
                                     <div className="chrome-x"><i className="material-icons" onClick={this.close}>close</i></div>
                                     <div className="chrome-btn"><i className="material-icons" onClick={this.maximize}>{this.state.fullscreenIcon}</i></div>
                                     <div className="chrome-btn"><i className="material-icons">minimize</i></div>

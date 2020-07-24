@@ -68,6 +68,15 @@
 	box-shadow: 0 8px 6px -6px #4c8dad;
 }
 
+.handle h3{
+	float: left;
+	position: absolute;
+	font-family: 'Segoe UI';
+	color: white;
+	top: -25%;
+	padding-left: 2%;
+}
+
 .handle .chrome-x,.handle .chrome-btn{
 	float: right;
 	width: 60px;
