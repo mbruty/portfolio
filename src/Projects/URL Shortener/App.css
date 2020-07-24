@@ -1,0 +1,110 @@
+
+#url-shortener * {
+  background-color: #282c34;
+  font-family: 'Roboto', sans-serif;
+}
+
+#url-shortener .center{
+  color: white;
+  text-align: center;
+  padding: 200px 0;
+}
+
+#url-shortener .lbl{
+  color: #cacfdb;
+  overflow-wrap: break-word;
+  background-color: #363d4d;
+  position: relative;
+  font-size: 20px;
+  width: 40%;
+  margin: auto;
+  border-radius: 12px 12px 0px 0px;
+  transition: transform 2s ease-in-out;
+}
+
+#url-shortener .lbl.err{
+  background-color: #ff5c5c;
+}
+
+#url-shortener .lbl.success{
+  background-color: #32a852;
+}
+
+#url-shortener .url-box {
+  width: 100%;
+  margin-bottom: -10px;
+}
+
+#url-shortener .url-box input {
+  margin: auto;
+  display: block;
+  width: 40%;
+  padding: 15px;
+  margin-bottom: -10px;
+  
+  color: #282c34;
+  font-size: 20px;
+  appearance: none;
+  border:none;
+  outline: none;
+  background: none;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  background-color: #ffb833;
+  border-radius: 16px 16px 0px 0px;
+  transition: 0.4s;
+}
+
+#url-shortener .url-box input.err-input{
+  background-color: #ff5c5c;
+}
+
+#url-shortener .url-box input.bottom{
+  border-radius: 0px 0px 16px 16px;
+}
+#url-shortener .url-box input:focus {
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+#url-shortener .url-box input::placeholder{
+  color: #282c34;
+}
+
+#url-shortener .submit-btn {
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+  font-size: 20px;
+  appearance: none;
+  border:none;
+  outline: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#url-shortener div.title{
+  display:inline;
+  margin-left: 10px;
+  color: #ffb833;
+  font-weight: bold;
+  font-size: 30px;
+}
+#url-shortener div.title-boxed{
+  display:inline;
+  color: #282c34;
+  background-color: #ffb833;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 0px 8px 0px 8px;
+}
+
+#url-shortener .arrow{
+  padding-left: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+#url-shortener .submit-btn:hover .arrow {
+  transform: translateX(10px);
+}
