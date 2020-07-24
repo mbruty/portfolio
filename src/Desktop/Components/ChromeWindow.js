@@ -84,7 +84,7 @@ export default class ChromeWindow extends Component {
         }
         else{
             return(
-                <div className="chrome-box-fs">
+                <div className="chrome-box-fs" style={{zIndex: 999}}>
                         <div id="handle" className="handle" style={{cursor: 'default'}}>
                             <div className="chrome-x"><i className="material-icons" onClick={this.close}>close</i></div>
                             <div className="chrome-btn"><i className="material-icons" onClick={this.maximize}>{this.state.fullscreenIcon}</i></div>
