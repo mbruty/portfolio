@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Profile Home Page -->
+    <title>HUE Says?</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script>let light;
+        let game;
+        let doc;
+        let difficulty;
+        let difficulties = {
+            "Easy" : 1100,
+            "Medium" : 800,
+            "Hard" : 500,
+            "ExtraHard" : 200
+        };
+        let autoPlay = false;
+        class Game {
+            colorBlind;
+            delay;
+            sequence;
+            guessCount;
+            colours = ['blue', 'green', 'red', 'orange'];
+            coloursHex = ['#0000ff', '#00ff22', '#ff0800', '#ffa200'];
+            origColors = ['#8fd4ff', '#8fff8f', '#ff8f8f', '#ffd88f'];
+            allowPlay = true;
+            allowInput = false;
+        
+            constructor() {
+                $('#playBtn').removeClass("btn btn-secondary").addClass('btn btn-success');
+                this.colorBlind = false;
+                this.delay = 1000;
+                this.sequence = [this.getRandomInt(0, 3)];
+            }
+        
+            async correct(id) {
+                this.guessCount++;
+                light.setLightColour("green");
+                if (this.guessCount + 1 === this.sequence.length) {
+                    doc.currentScore++;
+                    document.getElementById("currScore").innerText = doc.currentScore;
+                    light.setLightWhite();
+                    this.allowInput = false;
+                    this.allowPlay = true;
+                    if (autoPlay) {
+                        setTimeout(function () {
+                            game.playSequence();
+                        }, 1000)
+                    }
+                    $('#playBtn').removeClass("btn btn-secondary").addClass('btn btn-success');
+                }
+        
+                document.getElementById(id).style.backgroundColor = this.coloursHex[id];
+                await this.timeout(300).then(function () {
+                    document.getElementById(id).style.backgroundColor = game.origColors[id];
+                });
+            }
+        
+            async incorrect() {
+                document.getElementById("playBtn").innerText = "Start Game";
+                doc.gameOver();
+                let counter = 0;
+                currScore.innerHTML = "0";
+                doc.currentScore = 0;
+                light.setLightAlert();
+                let interval = setInterval(async function () {
+                    document.getElementById("lightCard").style.backgroundColor = "red";
+                    await game.timeout(300).then(function () {
+                        document.getElementById("lightCard").style.backgroundColor = "white";
+                    });
+                    if (counter === 4) {
+                        clearInterval(interval);
+                        light.setLightWhite();
+                    }
+                    counter++;
+                }, 400);
+            }
+        
+            async playSequence() {
+                let delay = 500;
+                if (this.allowPlay) {   //Checks if playing is allowed, this stops the sequence trying to play over itself and
+                    // stops the user from playing the next sequence without getting the previous one right
+                    this.allowPlay = false;
+                    // Change the button to indicate the sequence is playing and button is not clickable
+                    $('#playBtn').removeClass("btn btn-success").addClass('btn btn-secondary');
+                    document.getElementById("playBtn").innerText = "Sequence Playing";
+                    let i = 0;
+                    while (i !== this.sequence.length) {
+                        await this.playNextSequence(i, delay);
+                        await this.timeout(100).then(function () {
+                            i++
+                        });
+                    }
+                    //Generate the next number in the sequence
+                    this.sequence.push(this.getRandomInt(0, 3));
+                    this.guessCount = 0;
+                    document.getElementById("playBtn").innerText = "Next Sequence";
+                    this.allowInput = true;
+                }
+            }
+        
+            async playNextSequence(i, delay) {
+                let currentNumber = this.getSequence(i);
+                light.setLightColour(this.colours[currentNumber]);
+                document.getElementById(currentNumber).style.backgroundColor = this.coloursHex[currentNumber];
+                await this.timeout(delay).then(function () {
+                    document.getElementById(currentNumber).style.backgroundColor = game.origColors[currentNumber];
+                    light.setLightWhite();
+                });
+            }
+        
+            async timeout(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        
+            getSequence(index) {
+                return this.sequence[index];
+            }
+        
+            getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        
+            checkGuess(guess) {
+                return this.sequence[this.guessCount] == guess;
+            }
+        }
+        
+        class Lights{
+            URI;
+            lightNumber;
+            colours;
+            constructor(){
+                this.lightNumber = 1; //Default light to use
+                this.setLabLightURI();
+                this.colours = {
+                    "blue":39632,
+                    "green":25500,
+                    "red":0,
+                    "orange":12750
+                }
+            }
+            setLightColour(colour){
+                let hue = this.colours[colour];
+                this.sendCommand({
+                    "on":true, "sat":254, "bri":254, "hue": hue
+                })
+            }
+            setLightWhite(){
+                this.sendCommand({"sat":0,"bri":100, "alert":"none"});
+            }
+            setLightAlert(){
+                this.sendCommand({"alert":"lselect","hue":0,"sat":254});
+            }
+            sendCommand(command){
+                $.ajax({
+                    url: this.URI+"/state",
+                    type: "PUT",
+                    data: JSON.stringify(command)
+                });
+            }
+            setLightNumber(lightNumber){
+                this.lightNumber = lightNumber;
+                this.setLabLightURI();
+                document.getElementById("lightBadge").innerText = `Current Light: ${lightNumber}`;
+            }
+            setLabLightURI(){
+                this.URI =  `http://192.168.0.50/api/stlaB2I6VZ8O80Qepc-1xfmLrHgyTFvB9IGupaQz/lights/${this.lightNumber}`;
+            }
+            turnAllOn(){
+                let origNumber = this.lightNumber;
+                for(let i = 0; i < 6; i++){
+                    this.lightNumber = i + 1;
+                    this.setLabLightURI();
+                    this.sendCommand({"on": true});
+                }
+                this.lightNumber = origNumber;
+                this.setLabLightURI();
+            }
+            turnAllOff(){
+                let origNumber = this.lightNumber;
+                for(let i = 0; i < 6; i++){
+                    this.lightNumber = i + 1;
+                    this.setLabLightURI();
+                    this.sendCommand({"on" : false});
+                }
+                this.lightNumber = origNumber;
+                this.setLabLightURI();
+            }
+            setAll(colour){
+                let origNumber = this.lightNumber;
+                for(let i = 1; i < 7; i++) {
+                    this.lightNumber = i;
+                    this.setLabLightURI();
+                    this.setLightColour(colour);
+                }
+                this.lightNumber = origNumber;
+                this.setLabLightURI();
+            }
+            alertAll(){
+                let origNumber = this.lightNumber;
+                for(let i = 1; i < 7; i++) {
+                    this.lightNumber = i;
+                    this.setLabLightURI();
+                    this.sendCommand({"alert":"lselect"});
+                }
+                this.lightNumber = origNumber;
+                this.setLabLightURI();
+            }
+            setLightHue(){
+                let value = document.getElementById("HUE-input").value;
+                let numValue = parseInt(value);
+                if(numValue >= 0 || numValue <= 50000){
+                    this.sendCommand({
+                        "on" : true,
+                        "hue" : numValue,
+                        "sat" : 254
+                    });
+                }
+                else{
+                    alert("HUE input needs to be a number between 0 - 50,000");
+                }
+            }
+        }
+        class Document{
+            currentScore = 0;
+            previousScore;
+            sessionHighScore;
+            allTimeHighScore;
+            constructor(){
+                this.sessionHighScore = 0;
+                this.allTimeHighScore = window.localStorage.highScore;
+                if(this.allTimeHighScore === undefined){
+                    window.localStorage.highScore = 0;
+                }
+                document.getElementById("highScore").innerText = this.allTimeHighScore;
+                if(window.localStorage.difficulty === undefined){
+                    window.localStorage.difficulty = "Easy";
+                }
+                difficulty = window.localStorage.difficulty;
+            }
+            showSettings(){
+                document.getElementById("lightBadge").innerText = `Current Light: ${light.lightNumber}`;
+                $(`#radio${difficulty}`).prop("checked", true);
+            }
+            saveSettings(){
+                window.localStorage.difficulty = difficulty;
+                light.setLabLightURI();
+            }
+            resetHighScore(){
+                window.localStorage.highScore = 0;
+                document.getElementById("highScore").innerText = "0";
+                this.allTimeHighScore = 0;
+                this.sessionHighScore = 0;
+                document.getElementById("seshHighScore").innerText = "0";
+            }
+            gameOver(){
+                //Delete current game and start a new one
+                game = new Game();
+        
+                //Set previous score
+                this.previousScore = this.currentScore;
+                document.getElementById("prevHighScore").innerText = this.previousScore;
+                if(this.sessionHighScore < this.currentScore){
+                    this.sessionHighScore = this.currentScore;
+                    document.getElementById("seshHighScore").innerText = this.sessionHighScore;
+                }
+                if(this.allTimeHighScore < this.currentScore){
+                    this.allTimeHighScore = this.currentScore;
+                    document.getElementById("highScore").innerText = this.allTimeHighScore;
+                    //Save the new high-score
+                    window.localStorage.highScore = this.allTimeHighScore;
+                }
+            }
+        }
+        
+        $( document ).ready(function() {
+            light = new Lights();
+            game = new Game();
+            doc = new Document();
+            let i = 0;
+            $('td').click(function() {
+                let id = $(this).attr('id');
+                if(game.allowInput){
+                    if(game.checkGuess(id)){
+                        game.correct(id);
+                    }
+                    else{
+                        game.incorrect();
+                        //Set HUE lights to alert red
+                    }
+                }
+            });
+            $('#autoPlayToggle').click(function() {
+                autoPlay = !!$(this).is(":checked");
+            });
+        });</script>
+    <style>
+        table {
+            width: 100%;
+        }
+        td {
+            width: 33.333%;
+            height: 100px;
+            border: 4px solid #222;
+        }
+        td:after {
+            content: '';
+            display: block;
+            margin-top: 100%;
+        }
+    </style>
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto Light", sans-serif}
+    </style>
+
+</head>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">HUE Says?</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+
+<!-- Settings Modal -->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="settingsModalLabel">Game Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="lightsDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        HUE Light to use
+                    </button>
+                    <span class="badge" id="lightBadge">Current Light: 1</span>
+                    <div class="dropdown-menu" aria-labelledby="lightsDropDown">
+                        <button class="dropdown-item" type="button" onclick="light.setLightNumber(1)">Light 1</button>
+                        <button class="dropdown-item" type="button" onclick="light.setLightNumber(2)">Light 2</button>
+                        <button class="dropdown-item" type="button" onclick="light.setLightNumber(3)">Light 3</button>
+                        <button class="dropdown-item" type="button"onclick="light.setLightNumber(4)">Light 4</button>
+                        <button class="dropdown-item" type="button" onclick="light.setLightNumber(5)">Light 5</button>
+                        <button class="dropdown-item" type="button" onclick="light.setLightNumber(6)">Light 6</button>
+                    </div>
+                    <div>
+                        <div class="p-3">
+                            <h5>Difficulty:</h5>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioEasy" value="easyBtn" onclick="difficulty = 'Easy'">
+                                <label class="form-check-label" for="inlineRadio1">Easy</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioMedium" value="mediumBtn" onclick="difficulty = 'Medium'">
+                                <label class="form-check-label" for="inlineRadio2">Medium</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioHard" value="hardBtn" onclick="difficulty = 'Hard'">
+                                <label class="form-check-label" for="inlineRadio2">Hard</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioExtraHard" value="xHardBtn" onclick="difficulty = 'ExtraHard'">
+                                <label class="form-check-label" for="inlineRadio2">Extra Hard</label>
+                            </div>
+                            <div class="btn btn-secondary mt-3" onclick="doc.resetHighScore()">Reset High Score</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="doc.saveSettings()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main">
+    <div class="w3-main">
+        <header id="game">
+
+        </header>
+        <div class="card-columns d-flex justify-content-start m-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    HUE Says? Game
+                </div>
+                <div class="card-body">
+                    <div class="pb-3">
+                        <button type="button" class="btn - btn-success" onclick="game.playSequence()" id="playBtn">Start game</button>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Current Score: <b id="currScore" style="right">0</b></li>
+                        <li class="list-group-item">Previous Score <b id="prevHighScore">0</b></li>
+                        <li class="list-group-item">Session High Score <b id="seshHighScore">0</b></li>
+                        <li class="list-group-item">All-time High Score: <b id="highScore">0</b></li>
+                    </ul>
+                    <div class="pl-3 pt-3">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" data-toggle="toggle" id="autoPlayToggle">
+                                Auto Play
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+            <div class="card mt-6 col-md-6 p-4" id="lightCard">
+                <table id="LightGrid">
+                    <tr>
+                        <td style="background-color: #8fd4ff" id="0"></td>
+                        <td style="background-color: #8fff8f" id="1"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #ff8f8f" id="2"></td>
+                        <td style="background-color: #ffd88f" id="3"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<div class="card ">
+    <div class="card-body">
+        HUE Says? ©Michael Bruty 2020
+    </div>
+</div>
+</body>
+</html>
