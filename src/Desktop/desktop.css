@@ -413,6 +413,16 @@
     border-radius: 2px;
 }
 
+
+.project-container .image-carousel{
+	width: 80%;
+	margin: auto;
+}
+
+.project-container .image-carousel img{
+	height: 500px;
+	object-fit: contain;
+}
 .project-container button:hover, .project-container button:focus {
     background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
 }
