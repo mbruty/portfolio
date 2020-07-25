@@ -23,7 +23,7 @@ export default class StartBar extends Component {
                         <div class="icons-left">
                             <a id="start-menu" onClick={this.toggleStartModal}><i class="material-icons noselect clickthrough">widgets</i></a>
                             <div className="search">
-                                <input type="text" placeholder="Type here to search"/>
+                                <input type="text" placeholder="Type here to search (project name | langauge)"/>
                                 <i className="material-icons noselect">search</i>
                             </div>
                         </div>
