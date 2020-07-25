@@ -12,6 +12,9 @@ export default class SettingsModal extends Component {
                 <div className="modal-item noselect" id="website-redirect">
                     Show Website Code
                 </div>
+                <div className="modal-item noselect" id="website-redirect">
+                    Show Mobile Website
+                </div>
             </div>
         )
     }

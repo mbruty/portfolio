@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SettingsModal from './SettingsModal';
+import projects from '../../projects.json';
 export default class StartModal extends Component {
     constructor(props){
         super(props);
@@ -50,6 +51,15 @@ export default class StartModal extends Component {
                     </div>
                 </div>
                 {this.state.showSettings ? <SettingsModal/> : null}
+                <div className="right-bar">
+                    <h3 className="noselect">Projects</h3>
+                        {projects.map(project => (
+                            <div className="entry noselect">
+                                <i className="material-icons noselect">{project.icon}</i>
+                                {project.name}
+                            </div>
+                        ))}
+                </div>
                 
             </div>
         )

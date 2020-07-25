@@ -3,6 +3,9 @@ import data from '../projects.json';
 import Project from './Project';
 import { DragDropContext } from 'react-beautiful-dnd';
 import ChromeWindow from './ChromeWindow';
+import StartBar from './StartBar';
+import '../desktop.css';
+import '../material.css';
 
 export default class Desktop extends Component {
     constructor(props) {
@@ -84,22 +87,24 @@ export default class Desktop extends Component {
         if(!this.state.loaded) return null;
         console.log(this.state.openWindows);
         return (
-            <div className="desktop">
-                {this.state.openWindows.map(element => <ChromeWindow show={element.showChrome} target={element.windowToShow} 
-                closeChrome={this.closeChrome} bringToFront={this.bringWindowToFront} z={element.z}/>)}
-                <table>
-                    <DragDropContext onDragEnd={this.onDragEnd}>
-                    {this.state.array.map((row, idx) => (
-                    <tr>
-                        {row.map(element => (
-                            <Project  element={element} idx={idx} callback={this.showWindow} z={element.z}/>
+            <>
+                <div className="desktop">
+                    {this.state.openWindows.map(element => <ChromeWindow show={element.showChrome} target={element.windowToShow} 
+                    closeChrome={this.closeChrome} bringToFront={this.bringWindowToFront} z={element.z}/>)}
+                    <table>
+                        <DragDropContext onDragEnd={this.onDragEnd}>
+                        {this.state.array.map((row, idx) => (
+                        <tr>
+                            {row.map(element => (
+                                <Project element={element} idx={idx} callback={this.showWindow} z={element.z}/>
+                            ))}
+                        </tr>
                         ))}
-                    </tr>
-                    ))}
-                </DragDropContext>
-                </table>
-                
-            </div>
+                    </DragDropContext>
+                    </table>
+                </div>
+                <StartBar/>
+            </>
         )
     }
 }

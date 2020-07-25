@@ -1,6 +1,6 @@
 import React from 'react';
 import MobileLayout from './Mobile/MobileLayout.js';
-import DesktopLayout from './Desktop/DesktopLayout.js';
+import Desktop from './Desktop/Components/Desktop.js';
 import './App.css';
 
 let devMobile = false;
@@ -11,7 +11,7 @@ function isMobile() {
   return check || devMobile;
 }
 function App() {
-  return isMobile() ? ( <MobileLayout/> ) : ( <DesktopLayout/> );
+  return isMobile() ? ( <MobileLayout/> ) : ( <Desktop/> );
 }
 
 export default App;
