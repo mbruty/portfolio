@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Contact Me",
+        "shortName": "Contact Me",
+        "icon":  "account_box"
+    },
+    {
+        "name": "Documents",
+        "shortName": "Documents",
+        "icon": "folder_open"
+    }
+]
