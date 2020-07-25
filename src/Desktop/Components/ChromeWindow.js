@@ -57,7 +57,10 @@ export default class ChromeWindow extends Component {
             case 'WinForms Social':
                 return (<div id="wf-social"><ShowProject width={this.state.width} height={this.state.height} name="WinForms Social Network"/></div>)
             case 'HUE Says':
-                return (<div id="hue-says"><HueSays width={this.state.width} height={this.state.height}/></div>)
+                return (
+                <div className="hue-says-container" style={{height: this.state.height - 40, width: this.state.width}}>
+                    <iframe src={window.location.href+"/game"} style={{height: this.props.height, width: this.props.width-5}}/>
+                </div>)
             default:
                 break;
         }
