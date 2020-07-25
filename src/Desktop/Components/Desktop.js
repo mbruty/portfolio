@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import data from '../projects.json';
+import display from '../display.json';
 import Project from './Project';
 import { DragDropContext } from 'react-beautiful-dnd';
 import ChromeWindow from './ChromeWindow';
@@ -83,7 +84,8 @@ export default class Desktop extends Component {
             }
         }
         let counter = 0;
-        data.forEach((_item, index) => {
+        let items = display.concat(data);
+        items.forEach((_item, index) => {
             const col = Math.floor(counter / 9)
             arr[index][col] = {...arr[index][col], item: _item};
             counter++;

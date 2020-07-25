@@ -1,10 +1,5 @@
 [
     {
-        "name": "Contact Me",
-        "shortName": "Contact Me",
-        "icon":  "account_box"
-    },
-    {
         "name": "Sorting Algorithm Visualiser",
         "shortName": "Sorting Vis",
         "icon":  "assessment",
@@ -22,10 +17,5 @@
         "shortName": "HUE Says",
         "icon": "videogame_asset",
         "langauge": "js, javascript, HTML, css"
-    },
-    {
-        "name": "Documents",
-        "shortName": "Documents",
-        "icon": "folder_open"
     }
 ]
