@@ -360,3 +360,54 @@
 .taskbar .right .datetime:hover {
 	background-color: rgba(255, 255, 255, 0.1) !important;
 }
+
+/* Projects */
+
+.project-container{
+	position: absolute;
+}
+
+.project-container h1{
+	text-align: center;
+	font-weight: normal;
+}
+
+.project-container h3{
+	margin-left: 40px;
+	font-weight: normal;
+}
+
+.project-container img{
+    display:block;
+    margin:auto;
+}
+
+.project-container .text-container{
+	padding-left: 5%;
+}
+
+.project-container .text-container h1,
+.project-container .text-container h2,
+.project-container .text-container h3,
+.project-container .text-container h4{
+	font-weight: bold;
+	padding-left:0;
+}
+
+.project-container button {
+    font-size: 100%;
+	padding: 0.5em 1em;
+	margin-right: 40px;
+	margin-top: -4px;
+	cursor: pointer;
+	float: right;
+    color: #444; /* rgba not supported (IE 8) */
+    border: none rgba(0, 0, 0, 0); 
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.project-container button:hover, .project-container button:focus {
+    background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}

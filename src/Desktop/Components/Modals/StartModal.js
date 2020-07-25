@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SettingsModal from './SettingsModal';
 import projects from '../../projects.json';
+import otherProjects from '../../other-projects.json';
 export default class StartModal extends Component {
     constructor(props){
         super(props);
@@ -59,6 +60,13 @@ export default class StartModal extends Component {
                 <div className="right-bar">
                     <h3 className="noselect">Projects</h3>
                         {projects.map(project => (
+                            <div className="entry noselect" onClick={this.showWindow}>
+                                <i className="material-icons noselect">{project.icon}</i>
+                                {" " + project.shortName}
+                            </div>
+                        ))}
+                    <h3 className="noselect">Non-Web Projects</h3>
+                        {otherProjects.map(project => (
                             <div className="entry noselect" onClick={this.showWindow}>
                                 <i className="material-icons noselect">{project.icon}</i>
                                 {" " + project.shortName}

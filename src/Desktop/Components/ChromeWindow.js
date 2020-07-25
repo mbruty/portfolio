@@ -3,6 +3,7 @@ import Draggable from 'react-draggable';
 import SortingVis from '../../Projects/Sorting Visualiser/App';
 import UrlShortener from '../../Projects/URL Shortener/App';
 import ReactResizeDetector from 'react-resize-detector';
+import ShowProject from './ShowProject';
 export default class ChromeWindow extends Component {
     constructor(props) {
         super(props);
@@ -49,6 +50,8 @@ export default class ChromeWindow extends Component {
                 return (<div id="sorting-vis"><SortingVis width={this.state.width} height={this.state.height}/></div>)
             case 'URL Shortener':
                 return (<div id="url-shortener"><UrlShortener width={this.state.width} height={this.state.height}/></div>)
+            case 'AirBnb Visualisation':
+                return(<div id="air-bnb"><ShowProject width={this.state.width} height={this.state.height} name="AirBnb Visualisation"/></div>)
             default:
                 break;
         }

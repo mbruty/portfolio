@@ -2,7 +2,8 @@
     {
         "name": "Sorting Algorithm Visualiser",
         "shortName": "Sorting Vis",
-        "icon":  "assessment"
+        "icon":  "assessment",
+        "description": "asdf"
     },
     {
         "name": "URL Shortener",
