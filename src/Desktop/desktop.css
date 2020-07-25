@@ -52,8 +52,8 @@
 	text-shadow: 0 0 3px #000;
 }
 .icon .material-icons{
+	margin-left: 20%;
 	font-size: 3.5em;
-	margin-left: 10%;
 	text-align: center;
 	pointer-events: none;
 }
