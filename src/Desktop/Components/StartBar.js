@@ -17,7 +17,7 @@ export default class StartBar extends Component {
     render() {
         return (
             <div>
-                <StartModal show={this.state.showStartModal} toggle={this.toggleStartModal}/>
+                <StartModal showWindow={this.props.showWindow} show={this.state.showStartModal} toggle={this.toggleStartModal}/>
                 <div class="taskbar">
                     <div class="icons">
                         <div class="icons-left">

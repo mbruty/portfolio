@@ -9,6 +9,7 @@ export default class StartModal extends Component {
         }
         this.startRef = React.createRef();
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.showWindow = this.showWindow.bind(this);
     }
 
     //Adding event listners to detect a click outside of the start
@@ -22,7 +23,6 @@ export default class StartModal extends Component {
     }
 
     handleClickOutside(event) {
-        console.log(event.target)
         if(this.props.show){
             if (!this.startRef.current.contains(event.target) && event.target.id !== 'start-menu') {
                 this.props.toggle();
@@ -34,6 +34,11 @@ export default class StartModal extends Component {
                 window.open("https://github.com/mbruty/portfolio", "_blank");
             }
         }
+    }
+
+    showWindow(e){
+        let name = e.target.innerText.split(' ');
+        this.props.showWindow(name[1] + " " + name[2])
     }
 
     render() {
@@ -54,9 +59,9 @@ export default class StartModal extends Component {
                 <div className="right-bar">
                     <h3 className="noselect">Projects</h3>
                         {projects.map(project => (
-                            <div className="entry noselect">
+                            <div className="entry noselect" onClick={this.showWindow}>
                                 <i className="material-icons noselect">{project.icon}</i>
-                                {project.name}
+                                {" " + project.shortName}
                             </div>
                         ))}
                 </div>

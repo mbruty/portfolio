@@ -16,12 +16,21 @@ export default class Desktop extends Component {
             openWindows: []
         }
         this.showWindow = this.showWindow.bind(this);
+        this.showWindowFromString = this.showWindowFromString.bind(this);
         this.closeChrome = this.closeChrome.bind(this);
         this.bringWindowToFront = this.bringWindowToFront.bind(this);
     }
 
     showWindow(e){
         const target = e.target.getElementsByTagName('h3')[0].innerText;
+        let openWindowsCoppy = [...this.state.openWindows];
+        let top = openWindowsCoppy.length;
+        openWindowsCoppy.push({showChrome: true, windowToShow: target, z: top})
+        this.setState({...this.state, openWindows: openWindowsCoppy});
+    }
+
+    showWindowFromString(str){
+        const target = str;
         let openWindowsCoppy = [...this.state.openWindows];
         let top = openWindowsCoppy.length;
         openWindowsCoppy.push({showChrome: true, windowToShow: target, z: top})
@@ -103,7 +112,7 @@ export default class Desktop extends Component {
                     </DragDropContext>
                     </table>
                 </div>
-                <StartBar/>
+                <StartBar showWindow={this.showWindowFromString}/>
             </>
         )
     }
