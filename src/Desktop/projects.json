@@ -3,11 +3,19 @@
         "name": "Sorting Algorithm Visualiser",
         "shortName": "Sorting Vis",
         "icon":  "assessment",
-        "description": "asdf"
+        "description": "asdf",
+        "langauge": "js, javascript, react, css"
     },
     {
         "name": "URL Shortener",
         "shortName": "URL Shortener",
-        "icon": "link"
+        "icon": "link",
+        "langauge": "js, javascript, react, css"
+    },
+    {
+        "name": "HUE Says",
+        "shortName": "HUE Says",
+        "icon": "videogame_asset",
+        "langauge": "js, javascript, HTML, css"
     }
 ]

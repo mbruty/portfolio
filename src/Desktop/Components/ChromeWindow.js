@@ -4,6 +4,7 @@ import SortingVis from '../../Projects/Sorting Visualiser/App';
 import UrlShortener from '../../Projects/URL Shortener/App';
 import ReactResizeDetector from 'react-resize-detector';
 import ShowProject from './ShowProject';
+import HueSays from './HueSays';
 export default class ChromeWindow extends Component {
     constructor(props) {
         super(props);
@@ -45,6 +46,7 @@ export default class ChromeWindow extends Component {
         this.props.bringToFront({id: this.props.target, z: this.props.z})
     }
     renderContent(toRender) {
+        console.log(toRender);
         switch(toRender){
             case 'Sorting Vis':
                 return (<div id="sorting-vis"><SortingVis width={this.state.width} height={this.state.height}/></div>)
@@ -52,6 +54,10 @@ export default class ChromeWindow extends Component {
                 return (<div id="url-shortener"><UrlShortener width={this.state.width} height={this.state.height}/></div>)
             case 'AirBnb Visualisation':
                 return(<div id="air-bnb"><ShowProject width={this.state.width} height={this.state.height} name="AirBnb Visualisation"/></div>)
+            case 'WinForms Social':
+                return (<div id="wf-social"><ShowProject width={this.state.width} height={this.state.height} name="WinForms Social Network"/></div>)
+            case 'HUE Says':
+                return (<div id="hue-says"><HueSays width={this.state.width} height={this.state.height}/></div>)
             default:
                 break;
         }
