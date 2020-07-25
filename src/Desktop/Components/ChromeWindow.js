@@ -58,8 +58,8 @@ export default class ChromeWindow extends Component {
             case 'HUE Says':
                 return (
                 <div className="hue-says-container" style={{height: this.state.height - 40, width: this.state.width}}>
-                    <iframe src={window.location.href+"game"} style={{height: this.props.height, width: this.props.width-5}}/>
-                </div>)
+                    <iframe src={"http://localhost:5000/game"} style={{height: this.state.height - 42,width: this.state.width - 5}}/>
+                </div>)//window.location.href
             default:
                 break;
         }

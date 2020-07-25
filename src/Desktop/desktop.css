@@ -418,8 +418,7 @@
 }
 
 .hue-says-container{
+	overflow: visible;
 	background-color: black;
 	position: absolute;
-	height: 100%;
-	width: 100%;
 }
