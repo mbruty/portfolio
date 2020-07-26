@@ -13,41 +13,44 @@ export default class Shortener extends Component {
                 slug: ""
             }
         }
+        this.urlChanged = this.urlChanged.bind(this);
+        this.slugChanged = this.slugChanged.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
-    urlChanged(component, evt) {
-        component.setState({
+    urlChanged(evt) {
+        this.setState({
             data: {
                 url: evt.target.value,
-                state: component.state.data.state,
+                state: this.state.data.state,
             },
             urlEmpty: evt.target.value === ""
         });
     }
 
-    slugChanged(component, evt) {
-        component.setState({
+    slugChanged(evt) {
+        this.setState({
             data: {
-                url: component.state.data.url,
+                url: this.state.data.url,
                 slug: evt.target.value
             },
             slugEmpty: evt.target.value === ""
         });
         let lbl = document.getElementById('txtLbl');
-        lbl.innerText = "New link: https://bestsong.co.uk/" + evt.target.value;
+        lbl.innerText = `New link: ${window.location.href}` + evt.target.value;
         lbl.classList.remove('err');
         lbl.classList.remove('success');
     }
-    async submit(component) {
-        let data = component.state.data;
-        component.setState({
+    async submit() {
+        let data = this.state.data;
+        this.setState({
             urlEmpty: data.url === ""
         });
-        component.setState({
+        this.setState({
             slugEmpty: data.slug === ""
         });
         if (data.url !== "" && data.slug !== "") {
-            await fetch('http://localhost:8080/api', {
+            await fetch(`${window.location.href}api`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -58,7 +61,7 @@ export default class Shortener extends Component {
             }).then((res) => {
                 if (res.ok) {
                     let lbl = document.getElementById('txtLbl');
-                    lbl.innerText = "Created! https://www.bestsong.co.uk " + this.state.data.slug;
+                    lbl.innerText = `Created! ${window.location.href}` + this.state.data.slug;
                     lbl.classList.remove('err');
                     lbl.classList.add('success');
                 } else if (res.status === 400) {
@@ -79,15 +82,15 @@ export default class Shortener extends Component {
     render() {
         return (
         <div class="center">
-            <div class="lbl" id="txtLbl">New link: https://bestsong.co.uk/</div>
+            <div class="lbl" id="txtLbl">New link: {window.location.href}</div>
             <div class="url-box">
                 <input placeholder={ this.state.urlEmpty ? "Enter a URL (Cannot be empty!)" : "Enter a URL"} className={ this.state.urlEmpty ? "err-input" : ""}
-                 onChange={(evt) => { this.urlChanged(this, evt); }} id="urlInput"/><br/>
+                 onChange={this.urlChanged} id="urlInput"/><br/>
             </div>
             <div class="url-box">
-                <input placeholder={ this.state.urlEmpty ? "Enter URL Slug (Cannot be empty!)" : "Enter URL Slug"} className={ this.state.slugEmpty ? "bottom err-input" : "bottom"} id="slug" onChange={(evt) => { this.slugChanged(this, evt); }}/><br/>
+                <input placeholder={ this.state.urlEmpty ? "Enter URL Slug (Cannot be empty!)" : "Enter URL Slug"} className={ this.state.slugEmpty ? "bottom err-input" : "bottom"} id="slug" onChange={this.slugChanged}/><br/>
             </div>
-            <button class="submit-btn" onClick={() => {this.submit(this)}}>Submit<i class="fa fa-angle-right arrow"></i></button>
+            <button class="submit-btn" onClick={this.submit}>Submit<i class="fa fa-angle-right arrow"></i></button>
         </div>
         )
     }
