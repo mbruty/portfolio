@@ -26,8 +26,14 @@ export default class Desktop extends Component {
         const target = e.target.getElementsByTagName('h3')[0].innerText;
         let openWindowsCoppy = [...this.state.openWindows];
         let top = openWindowsCoppy.length;
-        openWindowsCoppy.push({showChrome: true, windowToShow: target, z: top})
-        this.setState({...this.state, openWindows: openWindowsCoppy});
+        let window = openWindowsCoppy.filter(x => x.windowToShow === target)[0];
+        if(window){
+            this.bringWindowToFront({id: window.windowToShow, z: window.z, bypass: true});
+        }
+        else{
+            openWindowsCoppy.push({showChrome: true, windowToShow: target, z: top})
+            this.setState({...this.state, openWindows: openWindowsCoppy});
+        }
     }
 
     showWindowFromString(str){
@@ -48,7 +54,7 @@ export default class Desktop extends Component {
 
     bringWindowToFront(toBringToFront){
         let top = this.state.openWindows.length;
-        if(toBringToFront.z === top) return;
+        if(toBringToFront.z === top && !toBringToFront.bypass) return;
         let currIdx = toBringToFront.z;
         let arrCoppy = [...this.state.openWindows];
         //Bring anything on top of it down
@@ -58,6 +64,7 @@ export default class Desktop extends Component {
             }
             else if(element.windowToShow === toBringToFront.id){
                 element.z = top;
+                element.showChrome = true;
             }
         })
         this.setState({...this.state, openWindows: arrCoppy});
@@ -71,7 +78,6 @@ export default class Desktop extends Component {
                 obj.showChrome = false;
             }
         });
-        console.log({copy: openWindowsCoppy, orig: this.state.openWindows})
         this.setState({...this.state, openWindows: openWindowsCoppy});
     }
 
@@ -96,7 +102,6 @@ export default class Desktop extends Component {
     }
     render() {
         if(!this.state.loaded) return null;
-        console.log(this.state.openWindows);
         return (
             <>
                 <div className="desktop noselect">

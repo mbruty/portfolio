@@ -46,7 +46,6 @@ export default class ChromeWindow extends Component {
         this.props.bringToFront({id: this.props.target, z: this.props.z})
     }
     renderContent(toRender) {
-        console.log(toRender);
         switch(toRender){
             case 'Sorting Vis':
                 return (<div id="sorting-vis"><SortingVis width={this.state.width} height={this.state.height}/></div>)
@@ -64,7 +63,7 @@ export default class ChromeWindow extends Component {
             case 'Recursion Example':
                 return (
                     <div className="hue-says-container" style={{height: this.state.height - 40, width: this.state.width}}>
-                    <iframe src={window.location.href} style={{height: this.state.height - 42,width: this.state.width - 5}}/>
+                    <iframe src={window.location.href+" "} style={{height: this.state.height - 42,width: this.state.width - 4}}/>
                 </div>)
             case 'Documents':
                 return (<Documents callback={this.props.showWindow} width={this.state.width} height={this.state.height}/>)
@@ -73,7 +72,6 @@ export default class ChromeWindow extends Component {
         }
     }
     render() {
-        console.log(this.state.top)
         if(!this.props.show) return null;
         else if (!this.state.fullscreen) {
             return (

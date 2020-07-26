@@ -28,7 +28,6 @@ export default class ShowProject extends Component {
             }
             return <p>{element}</p>
         })
-        console.log(res);
         return res;
     }
     renderImages(){

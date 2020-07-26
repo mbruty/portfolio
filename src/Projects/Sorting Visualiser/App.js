@@ -20,7 +20,6 @@ class App extends React.Component {
         this.state.data = randList(this.state.samples);
 
         this.onChange = this.onChange.bind(this);
-        this.showState = this.showState.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.sort = this.sort.bind(this);
         this.updateData = this.updateData.bind(this);
@@ -95,10 +94,6 @@ class App extends React.Component {
             this.worker.terminate();
         }
         this.setState({...this.state, data: randList(this.state.samples)});
-    }
-
-    showState() {
-        console.log(this.state);
     }
 
     render() {
