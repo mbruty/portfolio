@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, './build')));
 
-app.get('/:slug', async (req, res) => {
+app.get('/u/:slug', async (req, res) => {
 	let slug = req.params.slug;
 	//See if exists
 	try {

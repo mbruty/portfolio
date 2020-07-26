@@ -37,7 +37,7 @@ export default class Shortener extends Component {
             slugEmpty: evt.target.value === ""
         });
         let lbl = document.getElementById('txtLbl');
-        lbl.innerText = `New link: ${window.location.href}` + evt.target.value;
+        lbl.innerText = `New link: ${window.location.href}u/` + evt.target.value;
         lbl.classList.remove('err');
         lbl.classList.remove('success');
     }
@@ -61,7 +61,7 @@ export default class Shortener extends Component {
             }).then((res) => {
                 if (res.ok) {
                     let lbl = document.getElementById('txtLbl');
-                    lbl.innerText = `Created! ${window.location.href}` + this.state.data.slug;
+                    lbl.innerText = `Created! ${window.location.href}u/` + this.state.data.slug;
                     lbl.classList.remove('err');
                     lbl.classList.add('success');
                 } else if (res.status === 400) {
@@ -82,7 +82,7 @@ export default class Shortener extends Component {
     render() {
         return (
         <div class="center">
-            <div class="lbl" id="txtLbl">New link: {window.location.href}</div>
+            <div class="lbl" id="txtLbl">New link: {window.location.href + "u/"}</div>
             <div class="url-box">
                 <input placeholder={ this.state.urlEmpty ? "Enter a URL (Cannot be empty!)" : "Enter a URL"} className={ this.state.urlEmpty ? "err-input" : ""}
                  onChange={this.urlChanged} id="urlInput"/><br/>
