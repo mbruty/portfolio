@@ -22,8 +22,9 @@ export default class SearchModal extends Component {
     }
 
     handleClickOutside(event) {
+        console.log(event.target)
         if(this.props.show){
-            if (!this.searchRef.current.contains(event.target) && event.target.id !== 'start-menu') {
+            if (!this.searchRef.current.contains(event.target)) {
                 this.props.toggle({type: "toggle"});
             }
         }
