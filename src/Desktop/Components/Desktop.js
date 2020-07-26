@@ -99,9 +99,9 @@ export default class Desktop extends Component {
         console.log(this.state.openWindows);
         return (
             <>
-                <div className="desktop">
+                <div className="desktop noselect">
                     {this.state.openWindows.map(element => <ChromeWindow show={element.showChrome} target={element.windowToShow} 
-                    closeChrome={this.closeChrome} bringToFront={this.bringWindowToFront} z={element.z}/>)}
+                    closeChrome={this.closeChrome} bringToFront={this.bringWindowToFront} z={element.z} showWindow={this.showWindow}/>)}
                     <table>
                         <DragDropContext onDragEnd={this.onDragEnd}>
                         {this.state.array.map((row, idx) => (

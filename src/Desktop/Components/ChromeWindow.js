@@ -3,6 +3,7 @@ import Draggable from 'react-draggable';
 import SortingVis from '../../Projects/Sorting Visualiser/App';
 import UrlShortener from '../../Projects/URL Shortener/App';
 import ReactResizeDetector from 'react-resize-detector';
+import Documents from './Documents';
 import ShowProject from './ShowProject';
 export default class ChromeWindow extends Component {
     constructor(props) {
@@ -53,13 +54,20 @@ export default class ChromeWindow extends Component {
                 return (<div id="url-shortener"><UrlShortener width={this.state.width} height={this.state.height}/></div>)
             case 'AirBnb Visualisation':
                 return(<div id="air-bnb"><ShowProject width={this.state.width} height={this.state.height} name="AirBnb Visualisation"/></div>)
-            case 'WinForms Social':
+            case 'WinForms Social Network':
                 return (<div id="wf-social"><ShowProject width={this.state.width} height={this.state.height} name="WinForms Social Network"/></div>)
             case 'HUE Says':
                 return (
                 <div className="hue-says-container" style={{height: this.state.height - 40, width: this.state.width}}>
-                    <iframe src={"http://localhost:5000/game"} style={{height: this.state.height - 42,width: this.state.width - 5}}/>
-                </div>)//window.location.href
+                    <iframe src={window.location.href+"game"} style={{height: this.state.height - 42,width: this.state.width - 5}}/>
+                </div>)
+            case 'Recursion Example':
+                return (
+                    <div className="hue-says-container" style={{height: this.state.height - 40, width: this.state.width}}>
+                    <iframe src={window.location.href} style={{height: this.state.height - 42,width: this.state.width - 5}}/>
+                </div>)
+            case 'Documents':
+                return (<Documents callback={this.props.showWindow} width={this.state.width} height={this.state.height}/>)
             default:
                 break;
         }
@@ -97,6 +105,7 @@ export default class ChromeWindow extends Component {
             return(
                 <div className="chrome-box-fs" style={{zIndex: 999}}>
                         <div id="handle" className="handle" style={{cursor: 'default'}}>
+                            <h3>{this.props.target}</h3>
                             <div className="chrome-x"><i className="material-icons" onClick={this.close}>close</i></div>
                             <div className="chrome-btn"><i className="material-icons" onClick={this.maximize}>{this.state.fullscreenIcon}</i></div>
                             <div className="chrome-btn"><i className="material-icons">minimize</i></div>

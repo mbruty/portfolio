@@ -50,6 +50,14 @@
 	margin-top: 10%;
 	margin-bottom: -25%;
 	text-shadow: 0 0 3px #000;
+	cursor: pointer;
+}
+
+.icon:hover{
+	background-color: rgba(0, 0, 0, 0.3);
+	-webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+	transition: background-color 100ms linear;
 }
 .icon .material-icons{
 	margin-left: 20%;
@@ -431,4 +439,40 @@
 	overflow: visible;
 	background-color: black;
 	position: absolute;
+}
+
+/* Documents */
+
+.documents-container{
+	position: absolute;
+	display: flex;
+	flex-flow: row wrap;
+	height: 60%;
+	width: 100%;
+	top: 0;
+}
+
+.documents-container .icon{
+	position: relative;
+	color: black;
+	text-shadow: none;
+	max-width: 50px;
+	padding-right: 80px;
+	padding-left: 20px;
+	height: 150px;
+	position: relative;
+	top: -40px;
+	cursor: pointer;
+	
+}
+
+.documents-container .icon h3{
+	hyphens: overflow;
+}
+
+.documents-container .icon:hover{
+	background-color: rgba(0, 0, 0, 0.1);
+	-webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+	transition: background-color 100ms linear;
 }

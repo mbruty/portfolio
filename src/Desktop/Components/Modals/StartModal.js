@@ -39,7 +39,7 @@ export default class StartModal extends Component {
 
     showWindow(e){
         let name = e.target.innerText.split(' ');
-        this.props.showWindow(name[1] + " " + name[2])
+        this.props.showWindow(name.slice(1).join(' '));
         this.props.toggle();
     }
 

@@ -17,5 +17,11 @@
         "shortName": "HUE Says",
         "icon": "videogame_asset",
         "langauge": "js, javascript, HTML, css"
+    },
+    {
+        "name": "Recursion Example",
+        "shortName": "Recursion Example",
+        "icon": "cached",
+        "langauge": "js, javascript, HTML, css"
     }
 ]
