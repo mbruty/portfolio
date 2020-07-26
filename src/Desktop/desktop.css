@@ -290,7 +290,7 @@
 .taskbar .icons-left a {
 	display: table-cell;
 	border-bottom: 2px solid transparent;
-	width: 55px;
+	width: 48px;
 	position: relative;
 	cursor: pointer;
 }
@@ -313,7 +313,7 @@
 }
 
 .taskbar .icons-left .search input {
-	width: 280px;
+	width: 284px;
 	padding: 12px 10px;
 	background-color: #3a3a3a;
 	border: 1px solid #4a4a4a;
