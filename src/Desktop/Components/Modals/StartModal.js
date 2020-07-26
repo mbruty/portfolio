@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import SettingsModal from './SettingsModal';
 import projects from '../../projects.json';
 import otherProjects from '../../other-projects.json';
+import ProfileModal from './ProfileModal';
+
 export default class StartModal extends Component {
     constructor(props){
         super(props);
         this.state = {
-            showSettings: false
+            showSettings: false,
+            showProfile: false
         }
         this.startRef = React.createRef();
+        this.showAbout = this.showAbout.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.showWindow = this.showWindow.bind(this);
     }
@@ -31,6 +35,10 @@ export default class StartModal extends Component {
             if (event.target.id !== 'settings-modal'){
                 this.setState({...this.state, showSettings: false});
             }
+            if (event.target.id !== 'profile-modal' && event.target.id !== 'profile'){
+                console.log("no")
+                this.setState({...this.state, showProfile: false});
+            }
             if (event.target.id === 'website-redirect'){
                 window.open("https://github.com/mbruty/portfolio", "_blank");
             }
@@ -43,6 +51,10 @@ export default class StartModal extends Component {
         this.props.toggle();
     }
 
+    showAbout(e){
+        this.props.showWindow(e.target.innerText);
+    }
+
     render() {
         if(!this.props.show) return null;
         return (
@@ -52,12 +64,13 @@ export default class StartModal extends Component {
                         <div className="i-container" onClick={() => {this.setState({...this.state, showSettings: true})}}>
                             <i className="material-icons noselect">settings</i>
                         </div>
-                        <div className="i-container">
+                        <div className="i-container" onClick={() => {this.setState({...this.state, showProfile: true})}}>
                             <i className="material-icons noselect">account_circle</i>
                         </div>
                     </div>
                 </div>
                 {this.state.showSettings ? <SettingsModal/> : null}
+                {this.state.showProfile ? <ProfileModal show={this.showAbout}/> : null}
                 <div className="right-bar">
                     <h3 className="noselect">Projects</h3>
                         {projects.map(project => (

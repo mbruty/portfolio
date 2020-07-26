@@ -37,6 +37,7 @@ export default class Desktop extends Component {
     }
 
     showWindowFromString(str){
+        console.log(str);
         const target = str;
         let openWindowsCoppy = [...this.state.openWindows];
         let top = openWindowsCoppy.length;

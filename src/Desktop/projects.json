@@ -4,13 +4,13 @@
         "shortName": "Sorting Vis",
         "icon":  "assessment",
         "description": "asdf",
-        "langauge": "js, javascript, react, css"
+        "langauge": "js, javascript, react, css, HTML"
     },
     {
         "name": "URL Shortener",
         "shortName": "URL Shortener",
         "icon": "link",
-        "langauge": "js, javascript, react, css"
+        "langauge": "js, javascript, react, css, Mongo, MongoDB, HTML"
     },
     {
         "name": "HUE Says",

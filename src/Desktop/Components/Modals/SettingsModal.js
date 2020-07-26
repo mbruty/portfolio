@@ -8,7 +8,7 @@ export default class SettingsModal extends Component {
 
     render() {
         return (
-            <div className="settings-modal" id="settings-modal">
+            <div className="context-modal" id="settings-modal">
                 <div className="modal-item noselect" id="website-redirect">
                     Show Website Code
                 </div>
