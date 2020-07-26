@@ -8,6 +8,7 @@ export default class SearchModal extends Component {
         this.searchRef = React.createRef();
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.renderResults = this.renderResults.bind(this);
+        this.showWindow = this.showWindow.bind(this);
     }
 
     //Adding event listners to detect a click outside of the start
@@ -26,6 +27,12 @@ export default class SearchModal extends Component {
                 this.props.toggle({type: "toggle"});
             }
         }
+    }
+
+    showWindow(e){
+        let name = e.target.innerText.split(' ');
+        this.props.showWindow(name.slice(1).join(' '));
+        this.props.toggle({type: "toggle"});
     }
 
     renderResults(){
