@@ -1,4 +1,6 @@
-const express = require('express')
+const express = require('express');
+var nodemailer = require('nodemailer');
+var cors = require('cors')
 require('dotenv').config();
 const path = require('path');
 const rateLimit = require('express-rate-limit');
@@ -14,6 +16,33 @@ urls.createIndex({
 		slug: 1
 }, {
 		unique: true
+});
+
+const whitelist = ['bruty.net'];
+
+var corsOptions = {
+    origin: (origin, callback)  => {
+        if(whitelist.indexOf(origin) !== -1) {
+            callback(null,true);
+        }
+        else{
+            callback('Route not allowed');
+        }
+    },
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+const emailTransporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+       user: process.env.email,
+       pass: process.env.email_pass
+    },
+    debug: false,
+    logger: true
 });
 
 const schema = yup.object().shape({
@@ -85,6 +114,28 @@ app.get('/game', function (req, res) {
 app.get('*', (req,res) =>{
 		res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
+
+// Use cors so that only mail sent from the website will be processed
+app.post('/mail', cors(corsOptions), (req,res) =>{
+    const {from, message, subject} = req.body;
+    console.log();
+    let msg = `From: ${from}\n\n Message: \n ${message}`;
+    var mailOptions = {
+        from: process.env.email,
+        to: 'mike.bruty@yahoo.co.uk',
+        subject: subject,
+        text: msg
+    };
+/*
+    emailTransporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(201);
+        }
+    });
+    */
+})
 
 const port = process.env.PORT || 5000;
 app.listen(port);
