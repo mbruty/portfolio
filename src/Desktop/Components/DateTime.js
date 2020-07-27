@@ -16,7 +16,7 @@ export default class DateTime extends Component {
     }
     render() {
         return (
-            <div class="right">
+            <div class="right noselect">
                 <div class="datetime">
                     <span class="hour">
                         {`${this.state.date.getHours()} : ${this.state.date.getMinutes() < 10 ? '0' + this.state.date.getMinutes() : this.state.date.getMinutes()}`}
