@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import SettingsModal from './SettingsModal';
 import projects from '../../projects.json';
 import otherProjects from '../../other-projects.json';
-import ProfileModal from './ProfileModal';
 
 export default class StartModal extends Component {
     constructor(props){
@@ -55,6 +54,19 @@ export default class StartModal extends Component {
         this.props.showWindow(e.target.innerText);
     }
 
+    renderModal(){
+        if(this.state.showProfile){
+            return (
+                <div className="context-modal" id="profile-modal" style={{bottom: 0, height: '8%'}}>
+                    <div className="modal-item noselect" id="profile" style={{height: '100%'}} onClick={this.props.show}>
+                        Contact Me
+                    </div>
+                </div>
+            )
+        }
+        else return null;
+    }
+
     render() {
         if(!this.props.show) return null;
         return (
@@ -70,7 +82,7 @@ export default class StartModal extends Component {
                     </div>
                 </div>
                 {this.state.showSettings ? <SettingsModal/> : null}
-                {this.state.showProfile ? <ProfileModal show={this.showAbout}/> : null}
+                {this.renderModal()}
                 <div className="right-bar">
                     <h3 className="noselect">Projects</h3>
                         {projects.map(project => (
