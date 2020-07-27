@@ -94,6 +94,8 @@ export default class Desktop extends Component {
                 obj.minimized = false;
             }
         });
+        const z = this.state.openWindows.filter(x => x.windowToShow === target)[0];
+        this.bringWindowToFront({id: e.target.id, z: z.z});
         this.setState({...this.state, openWindows: openWindowsCoppy});
     }
 
