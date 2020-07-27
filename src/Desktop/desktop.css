@@ -149,9 +149,21 @@
 	width: 20%;
 	height: 65%;
 	bottom: 42px;
+	overflow: auto;
 	left: 0;
 	backdrop-filter: blur(8px);
 	background-color: rgba(54, 54, 54, 0.9);
+}
+
+.start-modal::-webkit-scrollbar {
+	width: 5px;
+}
+.start-modal::-webkit-scrollbar-track {
+	background: #292929;
+}
+.start-modal::-webkit-scrollbar-thumb {
+	border-radius: 20px;       /* roundness of the scroll thumb */
+	border: 3px solid rgb(216, 216, 216);  /* creates padding around scroll thumb */
 }
 
 .start-modal .left-bar{
