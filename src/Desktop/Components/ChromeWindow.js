@@ -21,6 +21,7 @@ export default class ChromeWindow extends Component {
         this.handleResize = this.handleResize.bind(this);
         this.close = this.close.bind(this);
         this.maximize = this.maximize.bind(this);
+        this.minimize = this.minimize.bind(this);
         this.bringToFront = this.bringToFront.bind(this);
     }
 
@@ -41,7 +42,10 @@ export default class ChromeWindow extends Component {
     maximize() {
         if(this.state.fullscreen) this.setState({...this.state, fullscreen: false, fullscreenIcon: 'fullscreen'});
         else this.setState({...this.state, fullscreen: true, fullscreenIcon: 'fullscreen_exit',
-         width: window.innerWidth, height: window.innerHeight - 43});
+            width: window.innerWidth, height: window.innerHeight - 43});
+    }
+    minimize() {
+        this.props.minimize(this.props.target);
     }
     bringToFront(){
         this.props.bringToFront({id: this.props.target, z: this.props.z})
@@ -92,7 +96,7 @@ export default class ChromeWindow extends Component {
                                     <h3>{this.props.target}</h3>
                                     <div className="chrome-x"><i className="material-icons" onClick={this.close}>close</i></div>
                                     <div className="chrome-btn"><i className="material-icons" onClick={this.maximize}>{this.state.fullscreenIcon}</i></div>
-                                    <div className="chrome-btn"><i className="material-icons">minimize</i></div>
+                                    <div className="chrome-btn"><i className="material-icons" onClick={this.minimize}>minimize</i></div>
                                 </div>
                             <div style={{overflow: 'auto'}}>
                                 {this.renderContent(this.props.target)}

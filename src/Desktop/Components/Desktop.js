@@ -20,10 +20,13 @@ export default class Desktop extends Component {
         this.showWindowFromString = this.showWindowFromString.bind(this);
         this.closeChrome = this.closeChrome.bind(this);
         this.bringWindowToFront = this.bringWindowToFront.bind(this);
+        this.minimize = this.minimize.bind(this);
+        this.unMinimize = this.unMinimize.bind(this);
     }
 
     showWindow(e){
         const target = e.target.getElementsByTagName('h3')[0].innerText;
+        const icon = e.target.getElementsByTagName('i')[0].innerText;
         let openWindowsCoppy = [...this.state.openWindows];
         let top = openWindowsCoppy.length;
         let window = openWindowsCoppy.filter(x => x.windowToShow === target)[0];
@@ -31,13 +34,12 @@ export default class Desktop extends Component {
             this.bringWindowToFront({id: window.windowToShow, z: window.z, bypass: true});
         }
         else{
-            openWindowsCoppy.push({showChrome: true, windowToShow: target, z: top})
+            openWindowsCoppy.push({showChrome: true, windowToShow: target, z: top, icon: icon})
             this.setState({...this.state, openWindows: openWindowsCoppy});
         }
     }
 
     showWindowFromString(str){
-        console.log(str);
         const target = str;
         let openWindowsCoppy = [...this.state.openWindows];
         let top = openWindowsCoppy.length;
@@ -82,6 +84,19 @@ export default class Desktop extends Component {
         this.setState({...this.state, openWindows: openWindowsCoppy});
     }
 
+    unMinimize(e){
+        const target = e.target.id;
+        console.log(target);
+        let openWindowsCoppy = [...this.state.openWindows];
+        openWindowsCoppy.map(obj =>  {
+            if(obj.windowToShow === target){
+                obj.showChrome = true;
+                obj.minimized = false;
+            }
+        });
+        this.setState({...this.state, openWindows: openWindowsCoppy});
+    }
+
     componentDidMount(){
         let arr = [];
         for(let i = 0; i < 9; ++i){
@@ -101,12 +116,23 @@ export default class Desktop extends Component {
         
         this.setState({array: arr, loaded: true});
     }
+
+    minimize(target){
+        let openWindowsCoppy = [...this.state.openWindows];
+        openWindowsCoppy.map(obj =>  {
+            if(obj.windowToShow === target){
+                obj.minimized = true;
+                obj.showChrome = false;
+            }
+        });
+        this.setState({...this.state, openWindows: openWindowsCoppy});
+    }
     render() {
         if(!this.state.loaded) return null;
         return (
             <>
                 <div className="desktop noselect">
-                    {this.state.openWindows.map(element => <ChromeWindow show={element.showChrome} target={element.windowToShow} 
+                    {this.state.openWindows.map(element => <ChromeWindow minimize={this.minimize} show={element.showChrome} target={element.windowToShow} 
                     closeChrome={this.closeChrome} bringToFront={this.bringWindowToFront} z={element.z} showWindow={this.showWindow}/>)}
                     <table>
                         <DragDropContext onDragEnd={this.onDragEnd}>
@@ -120,7 +146,7 @@ export default class Desktop extends Component {
                     </DragDropContext>
                     </table>
                 </div>
-                <StartBar showWindow={this.showWindowFromString}/>
+                <StartBar openWindows={this.state.openWindows} unMinimize={this.unMinimize} showWindow={this.showWindowFromString}/>
             </>
         )
     }

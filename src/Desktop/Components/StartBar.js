@@ -45,6 +45,12 @@ export default class StartBar extends Component {
                             </div>
                         </div>
                         <div className="icons-middle">
+                            {this.props.openWindows.map(element => {
+                                if(element.showChrome || element.minimized){
+                                    return <a className="icon-container" id={element.windowToShow} onClick={this.props.unMinimize}><i className="material-icons noselect">{element.icon}</i></a>
+                                }
+                                else return null;
+                            })}
                         </div>
                         <DateTime/>
                     </div>

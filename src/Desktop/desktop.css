@@ -337,11 +337,38 @@
 /* Middle Icons */
 
 .taskbar .icons-middle{
-	position: fixed;
-	left: 22%;
-	width: 60%;
+	position: relative;
+	width: 40%;
 	height: 43px;
 	display: inline-block;
+}
+
+
+.taskbar .icons-middle .icon-container{
+	position: relative;
+	color: white;
+	left: 20px;
+	cursor: pointer;
+	display: table-cell;
+	border-bottom: 2px solid transparent;
+	width: 48px;
+	position: relative;
+	cursor: pointer;
+}
+
+
+.taskbar .icons-middle .icon-container:hover{
+	background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.taskbar .icons-middle i{
+	display: inline-block;
+	font-size: 2.2em;
+	color: white;
+	padding-top: 4px;
+	transform: translateX(5px);
+	border-bottom: solid 2px #09a7e6;
+	pointer-events: none;
 }
 
 /* Right time */
@@ -354,7 +381,6 @@
 .taskbar .right .datetime {
 	display: table-cell;
 	width: 70px !important;
-	cursor: pointer;
 	padding-top: 3px;
 }
 
