@@ -74,6 +74,7 @@
   width: 20%;
   margin-left: 40%;
   margin-right: 40%;
+  padding-top: 5px;
   font-size: 20px;
   appearance: none;
   border:none;
@@ -82,6 +83,10 @@
   color: white;
   cursor: pointer;
   text-decoration: underline;
+}
+
+#url-shortener .submit-btn:hover{
+  color:#ffb833;
 }
 
 #url-shortener div.title{
