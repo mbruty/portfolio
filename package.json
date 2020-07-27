@@ -26,7 +26,7 @@
     "yup": "^0.29.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "build": "react-scripts build",
     "dev": "react-scripts start",
     "test": "react-scripts test",
