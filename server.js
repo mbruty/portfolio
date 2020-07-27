@@ -18,7 +18,7 @@ urls.createIndex({
 		unique: true
 });
 
-const whitelist = ['bruty.net'];
+const whitelist = ['http://localhost:5000', 'bruty.net'];
 
 var corsOptions = {
     origin: (origin, callback)  => {
@@ -118,7 +118,6 @@ app.get('*', (req,res) =>{
 // Use cors so that only mail sent from the website will be processed
 app.post('/mail', cors(corsOptions), (req,res) =>{
     const {from, message, subject} = req.body;
-    console.log();
     let msg = `From: ${from}\n\n Message: \n ${message}`;
     var mailOptions = {
         from: process.env.email,
@@ -126,7 +125,7 @@ app.post('/mail', cors(corsOptions), (req,res) =>{
         subject: subject,
         text: msg
     };
-/*
+    res.sendStatus(200);
     emailTransporter.sendMail(mailOptions, function(error, info){
         if (error) {
             res.sendStatus(500);
@@ -134,7 +133,6 @@ app.post('/mail', cors(corsOptions), (req,res) =>{
             res.sendStatus(201);
         }
     });
-    */
 })
 
 const port = process.env.PORT || 5000;

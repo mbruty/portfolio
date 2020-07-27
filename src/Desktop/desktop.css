@@ -572,3 +572,52 @@
 .contact-container textarea:focus{
 	outline: none;
 }
+
+.success-modal{
+	visibility: visible;
+	position: absolute;
+	background-color: white;
+	width: 40%;
+	height: auto;
+	z-index: 99;
+	top: 15%;
+	left: 30%;
+	color: black;
+	font-size:1.5em;
+	text-align: center;
+	padding-top: 10px;
+	border-radius: 0 0 10px 10px;
+}
+
+.success-modal .icon-container{
+	border-radius: 0 0 240px 50%/60px;
+	background-color:#edf2f6;
+	transform: translateY(-10px);
+	padding-bottom: 50px;
+}
+.success-modal i {
+	color: #4fb954;
+	transform: translateY(30px);
+	font-size: 5em;
+}
+.failed-modal{
+	visibility: hidden;
+}
+
+
+.modal-button {
+    font-size: 0.8em;
+	padding: 0.5em 1em;
+	margin:auto;
+	cursor: pointer;
+    color: rgb(221, 221, 221);
+    border: none rgba(0, 0, 0, 0); 
+    background-color: rgb(56, 149, 211);;
+	text-decoration: none;
+	margin-bottom: 20px;
+    border-radius: 2px;
+}
+.modal-button:hover, 
+.modal-button:focus {
+    background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}
