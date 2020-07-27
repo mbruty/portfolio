@@ -41,7 +41,6 @@ export default class Contact extends Component {
                 }
             })
             .catch(err=>{
-                console.log(err)
                 this.setState({...this.state, failed: true, success: false})
             });
     }

@@ -35,7 +35,6 @@ export default class StartModal extends Component {
                 this.setState({...this.state, showSettings: false});
             }
             if (event.target.id !== 'profile-modal' && event.target.id !== 'profile'){
-                console.log("no")
                 this.setState({...this.state, showProfile: false});
             }
             if (event.target.id === 'website-redirect'){
