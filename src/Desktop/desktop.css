@@ -154,16 +154,20 @@
 	backdrop-filter: blur(8px);
 	background-color: rgba(54, 54, 54, 0.9);
 }
-
+.search-modal:-webkit-scrollbar,
 .start-modal::-webkit-scrollbar {
 	width: 5px;
 }
+
+.search-modal::-webkit-scrollbar-track,
 .start-modal::-webkit-scrollbar-track {
 	background: #292929;
 }
+
+.search-modal::-webkit-scrollbar-thumb,
 .start-modal::-webkit-scrollbar-thumb {
-	border-radius: 20px;       /* roundness of the scroll thumb */
-	border: 3px solid rgb(216, 216, 216);  /* creates padding around scroll thumb */
+	border-radius: 20px;
+	border: 3px solid rgb(216, 216, 216);
 }
 
 .start-modal .left-bar{
@@ -516,6 +520,7 @@
 /* Search Modal */
 .search-modal{
 	position: absolute;
+	overflow: auto;
 	width: 380px;
 	height: 65%;
 	bottom: 42px;
