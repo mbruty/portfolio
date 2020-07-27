@@ -560,6 +560,7 @@
 
 .contact-container textarea{
 	resize: none;
+	font-size: 1.3em;
 	color: white;
 	background-color: #484848;
 	border:none;
