@@ -56,8 +56,8 @@ export default class StartModal extends Component {
     renderModal(){
         if(this.state.showProfile){
             return (
-                <div className="context-modal" id="profile-modal" style={{bottom: 0, height: '8%'}}>
-                    <div className="modal-item noselect" id="profile" style={{height: '100%'}} onClick={this.props.show}>
+                <div className="context-modal" id="profile-modal" style={{bottom: 2, height: '8%'}}>
+                    <div className="modal-item noselect" id="profile" style={{height: '80%'}} onClick={this.props.show}>
                         Contact Me
                     </div>
                 </div>
