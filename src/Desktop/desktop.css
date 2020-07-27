@@ -85,7 +85,7 @@
 	left: 15%;
 	top: 5%;
 	resize: both;
-	overflow: auto;
+	overflow: hidden;
 	box-shadow: 0 8px 6px -6px black;
 }
 
@@ -131,13 +131,6 @@
 	cursor: grab;
 	z-index: 1;
 	box-shadow: 0 8px 6px -6px black;
-}
-
-.chrome-box .chrome-content, .chrome-box-fs .chrome-content{
-	position: relative;
-	background-color: black;
-	height: 99%;
-	width: 100%;
 }
 
 .chrome-box-fs{
@@ -382,6 +375,7 @@
 
 .project-container{
 	position: absolute;
+	overflow: auto;
 }
 
 .project-container h1{
@@ -497,4 +491,83 @@
 	font-weight: normal;
 	padding-left: 15px;
 	font-size: 1.5em;
+}
+
+.contact-container{
+	background-color:#262626;
+	overflow: hidden;
+}
+
+.contact-container input{
+	background-color:#262626;
+	color: white;
+	border: none;
+	height: 100%;
+	width: 80%;
+	padding-left: 10%;
+	margin-left: 5%;
+	font-size: 1.2em;
+	border-bottom: 2px solid black;
+}
+
+.contact-container input:focus{
+	outline: none;
+}
+
+.contact-container .row{
+	position: relative;
+	height: 5%;
+	padding-bottom: 1%;
+}
+
+.contact-container .row span{
+	color: white;
+	position: absolute;
+	font-size: 1.2em;
+	left: 6%;
+	margin-top: 5px;
+}
+
+.contact-container .send{
+	cursor: pointer;
+	color: white;
+	padding-right: 3%;
+	padding-top: 1%;
+	
+	width: 140px;
+	height: 50px;
+}
+
+.contact-container .send:hover{
+	background-color: rgba(255, 255, 255, 0.377);
+	-webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+	transition: background-color 100ms linear;
+}
+.contact-container .send i{
+	font-size: 2em;
+	float: right;
+	padding-right: 10px;
+	padding-top:5px;
+}
+
+.contact-container .send a{
+	font-size: 2em;
+	right: 100px;
+	top: 0;
+	float:right;
+}
+
+.contact-container textarea{
+	resize: none;
+	color: white;
+	background-color: #484848;
+	border:none;
+	width:90%;
+	margin-top: 2%;
+	margin-left: 5%;
+	height: 60%;
+}
+.contact-container textarea:focus{
+	outline: none;
 }

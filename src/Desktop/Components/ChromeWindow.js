@@ -5,6 +5,7 @@ import UrlShortener from '../../Projects/URL Shortener/App';
 import ReactResizeDetector from 'react-resize-detector';
 import Documents from './Documents';
 import ShowProject from './ShowProject';
+import Contact from './Contact';
 export default class ChromeWindow extends Component {
     constructor(props) {
         super(props);
@@ -67,6 +68,8 @@ export default class ChromeWindow extends Component {
                 </div>)
             case 'Documents':
                 return (<Documents callback={this.props.showWindow} width={this.state.width} height={this.state.height}/>)
+            case 'Contact Me':
+                return (<Contact width={this.state.width} height={this.state.height}/>);
             default:
                 break;
         }
@@ -91,7 +94,7 @@ export default class ChromeWindow extends Component {
                                     <div className="chrome-btn"><i className="material-icons" onClick={this.maximize}>{this.state.fullscreenIcon}</i></div>
                                     <div className="chrome-btn"><i className="material-icons">minimize</i></div>
                                 </div>
-                            <div className="chrome-content-box">
+                            <div style={{overflow: 'auto'}}>
                                 {this.renderContent(this.props.target)}
                             </div>
                         </div>
@@ -101,14 +104,14 @@ export default class ChromeWindow extends Component {
         }
         else{
             return(
-                <div className="chrome-box-fs" style={{zIndex: 999}}>
-                        <div id="handle" className="handle" style={{cursor: 'default'}}>
+                <div style={{zIndex: 999}}>
+                        <div id="handle" className="handle" style={{cursor: 'auto'}}>
                             <h3>{this.props.target}</h3>
                             <div className="chrome-x"><i className="material-icons" onClick={this.close}>close</i></div>
                             <div className="chrome-btn"><i className="material-icons" onClick={this.maximize}>{this.state.fullscreenIcon}</i></div>
                             <div className="chrome-btn"><i className="material-icons">minimize</i></div>
                         </div>
-                        <div className="chrome-content-box">
+                        <div style={{overflow: 'scroll'}}>
                             {this.renderContent(this.props.target)}
                         </div>
                 </div>
