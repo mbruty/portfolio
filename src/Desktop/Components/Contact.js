@@ -4,7 +4,7 @@ export default class Contact extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            success: true,
+            success: false,
             failed: false, 
         }
         this.email = null;
