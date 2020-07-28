@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import ChromeWindow from './ChromeWindow';
 import StartBar from './StartBar';
 import '../desktop.css';
-import '../material.css';
+import '../../material.css';
 
 export default class Desktop extends Component {
     constructor(props) {
@@ -100,6 +100,7 @@ export default class Desktop extends Component {
     }
 
     componentDidMount(){
+        document.title = "Windows Bruty Edition";
         let arr = [];
         for(let i = 0; i < 9; ++i){
             arr[i] = [];
