@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import WebProjects from '../../projects.json';
-import OtherProjects from '../../other-projects.json';
+import WebProjects from '../../../projects.json';
+import OtherProjects from '../../../other-projects.json';
 export default class SearchModal extends Component {
 
     constructor(props) {

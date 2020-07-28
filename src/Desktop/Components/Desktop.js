@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import data from '../projects.json';
-import display from '../display.json';
+import data from '../../projects.json';
+import display from '../../display.json';
 import Project from './Project';
 import { DragDropContext } from 'react-beautiful-dnd';
 import ChromeWindow from './ChromeWindow';

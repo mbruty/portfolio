@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SettingsModal from './SettingsModal';
-import projects from '../../projects.json';
-import otherProjects from '../../other-projects.json';
+import projects from '../../../projects.json';
+import otherProjects from '../../../other-projects.json';
 
 export default class StartModal extends Component {
     constructor(props){

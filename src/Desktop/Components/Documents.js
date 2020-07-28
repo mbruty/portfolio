@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import projects from '../other-projects.json';
+import projects from '../../other-projects.json';
 import Project from './Project';
 export default class Documents extends Component {
     render() {

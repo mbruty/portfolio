@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import data from '../other-projects.json';
+import data from '../../other-projects.json';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default class ShowProject extends Component {
