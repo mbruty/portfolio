@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SortingVis from '../../Projects/Sorting Visualiser/App';
 import UrlShortener from '../../Projects/URL Shortener/App'
 import ShowProject from '../../Global Components/ShowProject';
+import Contact from '../../Global Components/Contact';
 
 export default class ChromeWindow extends Component {
     constructor(props){
@@ -23,6 +24,8 @@ export default class ChromeWindow extends Component {
                 <div className="hue-says-container" style={{height: window.innerHeight - 40, width: window.innerWidth}}>
                     <iframe src={window.location.href+"game"} style={{height: window.innerHeight - 42,width: window.innerWidth - 5}}/>
                 </div>)
+            case 'Contact Me':
+                return(<Contact width={window.innerWidth} height={window.innerHeight}/>)
             default:
                 break;
         }

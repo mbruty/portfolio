@@ -38,7 +38,7 @@ export default class SearchModal extends Component {
     renderResults(){
         let projects = WebProjects.concat(OtherProjects);
         let render = projects.map(project => {
-            if(project.name.toLowerCase().includes(this.props.search) || project.langauge.toLowerCase().includes(this.props.search)){
+            if(project.name.toLowerCase().includes(this.props.search) || project.language.toLowerCase().includes(this.props.search)){
                 return (
                 <div className="entry noselect" onClick={this.showWindow}>
                     <i className="material-icons noselect">{project.icon}</i>

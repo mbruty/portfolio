@@ -5,7 +5,7 @@ import UrlShortener from '../../Projects/URL Shortener/App';
 import ReactResizeDetector from 'react-resize-detector';
 import Documents from './Documents';
 import ShowProject from '../../Global Components/ShowProject';
-import Contact from './Contact';
+import Contact from '../../Global Components/Contact';
 export default class ChromeWindow extends Component {
     constructor(props) {
         super(props);

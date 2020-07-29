@@ -4,24 +4,24 @@
         "shortName": "Sorting Vis",
         "icon":  "assessment",
         "description": "asdf",
-        "langauge": "js, javascript, react, css, HTML"
+        "language": "js, javascript, react, css, HTML"
     },
     {
         "name": "URL Shortener",
         "shortName": "URL Shortener",
         "icon": "link",
-        "langauge": "js, javascript, react, css, Mongo, MongoDB, HTML"
+        "language": "js, javascript, react, css, Mongo, MongoDB, HTML"
     },
     {
         "name": "HUE Says",
         "shortName": "HUE Says",
         "icon": "videogame_asset",
-        "langauge": "js, javascript, HTML, css"
+        "language": "js, javascript, HTML, css"
     },
     {
         "name": "Recursion Example",
         "shortName": "Recursion Example",
         "icon": "cached",
-        "langauge": "js, javascript, HTML, css"
+        "language": "js, javascript, HTML, css"
     }
 ]

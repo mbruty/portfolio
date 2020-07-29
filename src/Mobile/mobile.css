@@ -125,6 +125,19 @@
     display: block;
     font-size: 2.5rem;
 }
+
+.app-draw .app-container .search-entry{
+    width: 100vw;
+    font-size: 1.5rem;
+    padding-top: 2vh;
+    padding-left: 10vw;
+}
+
+.app-draw .app-container .search-entry i{
+    display: inline-block;
+    transform: translateY(1.3vh);
+    font-size: 2.5rem;
+}
 .date-container{
     width: 100%;
     height: 10vh;
@@ -186,3 +199,4 @@
     height: 100%;
     background-color: black;
 }
+

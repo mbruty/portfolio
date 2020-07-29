@@ -8,7 +8,7 @@ export default class MobileLayout extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {showChrome: false, windowToShow: null}
+        this.state = {showChrome: false, windowToShow: "Contact"}
         this.closeWindow = this.closeWindow.bind(this);
         this.showWindow = this.showWindow.bind(this);
     }
