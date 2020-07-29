@@ -18,7 +18,7 @@ urls.createIndex({
 		unique: true
 });
 
-const whitelist = ['http://localhost:5000', 'bruty.net'];
+const whitelist = ['http://localhost:5000', 'bruty.net', 'http://51.195.151.113:5000/'];
 
 var corsOptions = {
     origin: (origin, callback)  => {
