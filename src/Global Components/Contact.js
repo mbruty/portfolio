@@ -10,11 +10,13 @@ export default class Contact extends Component {
         this.email = null;
         this.message= null;
         this.subject = null;
+        this.updateSubject = this.updateSubject.bind(this);
         this.updateEmail = this.updateEmail.bind(this);
         this.updateMessage = this.updateMessage.bind(this);
         this.sendMail = this.sendMail.bind(this);
     }
     updateSubject(e){
+        console.log("ye")
         this.subject = e.target.value;
     }
     updateEmail(e){
@@ -93,10 +95,10 @@ export default class Contact extends Component {
                     <input type="email" onChange={this.updateEmail}/>
                 </div>
                 <div className="row">
-                    <span className="noselect" onChange={this.updateSubject}>Subject: </span>
-                    <input type="email"/>
+                    <span className="noselect">Subject: </span>
+                    <input type="email" onChange={this.updateSubject}/>
                 </div>
-                <textarea>
+                <textarea onChange={this.updateMessage}>
 
                 </textarea>
             </div>
