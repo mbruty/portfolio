@@ -4,7 +4,7 @@ import SortingVis from '../../Projects/Sorting Visualiser/App';
 import UrlShortener from '../../Projects/URL Shortener/App';
 import ReactResizeDetector from 'react-resize-detector';
 import Documents from './Documents';
-import ShowProject from './ShowProject';
+import ShowProject from '../../Global Components/ShowProject';
 import Contact from './Contact';
 export default class ChromeWindow extends Component {
     constructor(props) {

@@ -12,14 +12,16 @@ export default class AppDraw extends Component {
                 </div>
                 <div className="app-container">
                     {projects.map(project => (
-                        <div className="entry noselect" onClick={this.showWindow}>
-                            <i className="material-icons noselect">{project.icon}</i>
+                        //Remove recursion as it's only for the desktop version
+                        project.name === "Recursion Example" ? null :
+                        <div id={project.name} className="entry noselect" onClick={this.props.showWindow}>
+                            <i id={project.name} className="material-icons noselect">{project.icon}</i>
                             {" " + project.shortName.slice(0, maxLength) + (project.shortName.length > maxLength ? "..." : "")}
                         </div>
                     ))}
                     {otherProjects.map(project => (
-                        <div className="entry noselect" onClick={this.showWindow}>
-                            <i className="material-icons noselect">{project.icon}</i>
+                        <div id={project.name} className="entry noselect" onClick={this.props.showWindow}>
+                            <i id={project.name} className="material-icons noselect">{project.icon}</i>
                             {" " + project.shortName.slice(0, maxLength) + (project.shortName.length > maxLength ? "..." : "")}
                         </div>
                     ))}

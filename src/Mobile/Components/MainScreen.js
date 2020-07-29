@@ -28,6 +28,9 @@ export default class MainScreen extends Component {
                             </span>
                         </div>
                     </div>
+                    <div className="carrot-container">
+                        <i className="material-icons up-carrot noselect">keyboard_arrow_up</i>
+                    </div>
                 </div>
         )
     }

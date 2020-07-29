@@ -12,7 +12,7 @@
 }
 
 .clickthrough{
-	pointer-events: none;
+    pointer-events: none;
 }
 
 .mobile-main{
@@ -26,7 +26,7 @@
 }
 
 .base-wrapper{
-    height: 91%;
+    height: 102vh;
     scroll-snap-align: start;
 }
 
@@ -50,13 +50,14 @@
     width: 100%;
 }
 
-.bottom-bar .up-carrot{
+.carrot-container{
     position: relative;
-    transform: translateY(-100%);
+    display: flex;
+    top: 90%;
+}
+.up-carrot{
     color: white;
-    font-size: 2.2rem;
-    left: 45%;
-    right: 45%;
+    margin: auto;
 }
 
 .bottom-bar .icon-container{
@@ -67,11 +68,6 @@
     align-items: center;
     justify-content: center;
     top: -50%;
-}
-.bottom-bar .icon-container i{
-    color:#2570d1;
-    font-size: 3.5rem;
-    padding-right: 5%;
 }
 .app-draw{
     z-index: 1;
@@ -141,4 +137,52 @@
 .date-container .time{
     display: block;
     font-size: 5rem;
+}
+
+.chrome-window{
+    height: 101vh;
+    width: 100%;
+    max-width:100vw;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.chrome-window .nav{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    height: 8%;
+    align-items: center;
+    background-color: #363636;
+    box-shadow: 0 8px 6px -6px #363636;
+    border-radius: 0 0 5px 5px;
+    vertical-align:middle;
+}
+
+.chrome-window .nav i{
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    padding-left: 5%;
+}
+
+.chrome-window .nav h3{
+    color: white;
+    font-weight: normal;
+    padding-left: 2%;
+}
+
+.chrome-window .chrome-content{
+    height: 92%;
+    width: 100%;
+    overflow-x: hidden;
+    transform: translateY(-5px);
+}
+
+.show-project{
+    width: 100%;
+    height: 100%;
+    background-color: black;
 }
