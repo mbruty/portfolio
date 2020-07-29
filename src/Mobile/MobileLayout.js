@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BottomBar from './Components/BottomBar';
+import MainScreen from './Components/MainScreen';
 import './mobile.css';
 import '../material.css';
 export default class MobileLayout extends Component {
@@ -9,9 +10,10 @@ export default class MobileLayout extends Component {
     }
     render() {
         return (
-            <div className="mobile-container">
-                <div className="mobile-base">
+            <div className="mobile-main">
+                <MainScreen/>
                 <BottomBar/>
+                <div className="app-draw">
                 </div>
             </div>
         )
