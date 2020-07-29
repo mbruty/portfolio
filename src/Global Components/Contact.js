@@ -37,14 +37,14 @@ export default class Contact extends Component {
             })
         };
         fetch(window.location.href+'mail', requestOptions)
-            .then(response => {
-                if(response.status === 200) {
-                    this.setState({...this.state, success: true})
-                }
-            })
-            .catch(err=>{
+        .then(response => {
+            if(response.status === 200) {
+                this.setState({...this.state, success: true})
+            }
+            else{
                 this.setState({...this.state, failed: true, success: false})
-            });
+            }
+        })
     }
 
     showError(){
