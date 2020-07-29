@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BottomBar from './Components/BottomBar';
 import MainScreen from './Components/MainScreen';
+import AppDraw from './Components/AppDraw';
 import './mobile.css';
 import '../material.css';
 export default class MobileLayout extends Component {
@@ -13,8 +14,7 @@ export default class MobileLayout extends Component {
             <div className="mobile-main">
                 <MainScreen/>
                 <BottomBar/>
-                <div className="app-draw">
-                </div>
+                <AppDraw/>
             </div>
         )
     }
