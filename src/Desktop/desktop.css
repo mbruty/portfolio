@@ -571,6 +571,12 @@
 	margin-top: 5px;
 }
 
+@media only screen and (max-width: 900px) {
+	.contact-container .row input{
+		padding-left: 20vw;
+	}
+}
+
 .contact-container .send{
 	cursor: pointer;
 	color: white;
