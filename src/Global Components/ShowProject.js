@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import data from '../../other-projects.json';
+import data from '../other-projects.json';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default class ShowProject extends Component {
@@ -39,7 +39,7 @@ export default class ShowProject extends Component {
                 <div className="image-carousel">
                     <Carousel autoPlay showThumbs={false} infiniteLoop={true} dynamicHeight={true}>
                         {this.project.image.map((element) =>(
-                            <div>
+                            <div style={{paddingRight: '2%'}}>
                                 <img src={element} />
                             </div>
                         ))}
