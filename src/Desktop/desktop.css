@@ -571,12 +571,6 @@
 	margin-top: 5px;
 }
 
-@media only screen and (max-width: 900px) {
-	.contact-container .row input{
-		padding-left: 20vw;
-	}
-}
-
 .contact-container .send{
 	cursor: pointer;
 	color: white;
@@ -669,4 +663,17 @@
 .modal-button:hover, 
 .modal-button:focus {
     background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}
+
+@media only screen and (max-width: 900px) {
+	.contact-container .row input{
+		padding-left: 20vw;
+	}
+
+	.success-modal{
+		width: 80%;
+		left: 10%;
+	}
+
+
 }
