@@ -2,11 +2,13 @@
     {
         "name": "Contact Me",
         "shortName": "Contact Me",
-        "icon":  "account_box"
+        "icon":  "account_box",
+        "language": " "
     },
     {
         "name": "Documents",
         "shortName": "Documents",
-        "icon": "folder_open"
+        "icon": "folder_open",
+        "language": " "
     }
 ]

@@ -20,7 +20,7 @@ export default class AppDraw extends Component {
     }
     unFocus(){
         this.textRef.current.value = "";
-        this.setState({search: null});
+        this.setState({search: ""});
     }
     render() {
         if(this.state.search){
