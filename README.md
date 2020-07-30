@@ -1,5 +1,5 @@
 # Portfolio
-[View Live Site Here](bruty.net)
+[View Live Site Here](http://bruty.net)
 ## Running locally
 First, clone the repository and open a terminal in that directory
 Run: ``npm install`` to install the dependencies
