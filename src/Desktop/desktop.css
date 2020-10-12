@@ -112,13 +112,23 @@
 }
 
 .handle .chrome-btn:hover{
-	background-color: #4d4d4d;
 	-webkit-transition: background-color 50ms linear;
     -ms-transition: background-color 50ms linear;
     transition: background-color 50ms linear;
 }
 .handle .chrome-x .material-icons, .handle .chrome-btn .material-icons{
 	font-size: 2em;
+	color: white;
+}
+
+.chrome-btn.read-me {
+	width: auto;
+	height: 70%;
+	padding: 5px;
+	background-color: rgba(255, 255, 255, 0.1);
+	margin-top: 0%;
+	text-align: center;
+	font-size: 1.2em;
 	color: white;
 }
 .handle, .chrome-box-fs .handle {
@@ -417,6 +427,7 @@
 
 .project-container{
 	position: absolute;
+	color: #000000 !important;
 	overflow: auto;
 }
 
