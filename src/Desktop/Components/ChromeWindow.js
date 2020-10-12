@@ -80,16 +80,7 @@ export default class ChromeWindow extends Component {
   };
   renderContent(toRender) {
     if (this.state.readMe) {
-      switch (toRender) {
-        case "Sorting Vis":
-          return <this.RenderProject name="Sorting Algorithm Visualiser" />;
-        case "URL Shortener":
-          return <this.RenderProject name="URL Shortener" />;
-        case "HUE Says":
-          return <this.RenderProject name="HUE Says" />;
-        default:
-          return null;
-      }
+      return <this.RenderProject name={toRender} />;
     }
     switch (toRender) {
       case "Sorting Vis":
@@ -146,6 +137,21 @@ export default class ChromeWindow extends Component {
             />
           </div>
         );
+      case "Starwars Guild Inspector":
+        return (
+          <div
+            className="swgoh"
+            style={{ height: this.state.height - 40, width: this.state.width }}
+          >
+            <iframe
+              src="http://tw.bruty.net"
+              style={{
+                height: this.state.height - 42,
+                width: this.state.width,
+              }}
+            />
+          </div>
+        );
       case "Documents":
         return (
           <Documents
@@ -164,19 +170,21 @@ export default class ChromeWindow extends Component {
     let project = projects.filter(
       (project) => project.shortName === this.props.target
     );
-    if (!!project)
+    console.log(project)
+    if (project[0] === undefined) 
       project = otherProjects.filter(
         (project) => project.shortName === this.props.target
       );
+    console.log(this.props.target);
     return project[0].url;
   };
   render() {
     let showReadMe = true;
     let showCode = true;
+    let project = projects.filter((x) => x.shortName === this.props.target);
     if (this.props.target === "Contact Me" || this.props.target === "Documents")
       showCode = false;
-    if (projects.filter((x) => x.shortName === this.props.target).length === 0)
-      showReadMe = false;
+    if (project.length === 0) showReadMe = false;
     if (!this.props.show) return null;
     else if (!this.state.fullscreen) {
       return (
@@ -205,7 +213,7 @@ export default class ChromeWindow extends Component {
                 onMouseDown={this.mouseDown}
                 onMouseUp={this.mouseUp}
               >
-                <h3>{this.props.target}</h3>
+                <h3>{project[0] ? project[0].name : this.props.target}</h3>
                 <div className="chrome-x">
                   <i className="material-icons" onClick={this.close}>
                     close
@@ -226,6 +234,7 @@ export default class ChromeWindow extends Component {
                   <div
                     className="chrome-btn read-me"
                     onClick={this.toggleReadme}
+                    style={{ marginRight: "5px" }}
                   >
                     {this.state.readMe ? "Close Read Me" : "Read Me"}
                   </div>
@@ -236,7 +245,7 @@ export default class ChromeWindow extends Component {
                     style={{ marginRight: "5px" }}
                     onClick={() => window.open(this.getGitUrl())}
                   >
-                    View Source
+                    View Source Code
                   </div>
                 ) : null}
               </div>

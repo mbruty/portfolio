@@ -1,37 +1,44 @@
 [
-    {
-        "name": "Sorting Algorithm Visualiser",
-        "shortName": "Sorting Vis",
-        "icon":  "assessment",
-        "description": "asdf",
-        "language": "js, javascript, react, css, HTML",
-        "url": "https://github.com/mbruty/Sorting-visualiser",
-        "image": [],
-        "info": "This program does what it says on the tin. Visualises Sorting algorithms!\n## How does it work?\nThere is a random array generated of a given length. This array contains numbers from 1 - 100.\nThe graph component is fed this array, and renders each bar, with the value set to the height % e.g an element of value 43.6 will have it's height set to 43.6% of the container.\nWhen the sort is started, the sorting algorithm is passed the 'setState' of the graph component, every time the algorithm does a swap, the graph component is fed the new array and re-renders the new array. If there is a delay specified, the algorithm will then wait for that amount of time before continuing.\n## Speed test\nThis just uses the bare sorting algorithm, without any callback or delay. A random array is generated, this array is then duplicated to each algorithm and then they're set off! Each algorithm is assigned to a new web-worker to ensure that the results aren't skewed due to any processing having to happen on the main thread. This also stops the page from becoming un-responsive. Once each algorithm has completed it's run, it talks back to the main thread to give it's result. Once all the results have been collected, the page updates to show the result "
-    },
-    {
-        "name": "URL Shortener",
-        "shortName": "URL Shortener",
-        "icon": "link",
-        "language": "js, javascript, react, css, Mongo, MongoDB, HTML",
-        "url": "https://github.com/mbruty/React-link-shortener",
-        "image": [],
-        "info": "This app does exactly that. It takes a url and a slug, stores it and re-direct's any requests from that slug to the url... But how?\nThe *domain name*/u/*slug* route triggers a request to a mongodb server to fetch the stored url for the slug.\nThe mongodb database is just used as a key/value pair database, so other services like redis could also be used or even a SQL server with one table and a column for the slug and url!\nOnce the url has been obtained, the request is then redirected to the target url.\nIf the slug isn't found, the user is forwarded to a 404 page.\nOn a POST to the back-end, the chosen slug is checked against the database to ensure it hasn't already been taken, if it hasn't the url is stored with the slug for later use."
-    },
-    {
-        "name": "HUE Says",
-        "shortName": "HUE Says",
-        "icon": "videogame_asset",
-        "language": "js, javascript, HTML, css",
-        "url": "https://github.com/mbruty/SOFT166-HUE-Says",
-        "image": [],
-        "info": "\nWelcome to the HUE says memory game.\n## The game\nNavigate to the game page to get started. Watch the YouTube video above to see how to play the game.\n\nTo play the game, click the **Start game** button, this will show the sequence, just click the same buttons that light up to win!\n\nTicking the **Auto Play** box will automatically start the next sequence on completion.\n### Settings\nIn settings you can change the light you use, change the difficulty and reset the high score\n\nThe difficulty speeds in Ms are as follows:\n\n - Easy : 1100\n - Medium : 800\n - Hard : 500\n - Extra Hard : 200\n\n*Note: For the lights to work, you need to log-in to a computer in **SMB109** or change the **setLightURI** function in **game.js** to use the lights on your home network.**\n\n### How the lights will change during the game\n\n\nOnce you hit the **Start Game** button, the colour sequence is played on the lights.\n*Note : If the network is slow, the lights MAY not work on Extra Hard*\n\nOnce you start entering the sequence, the **Selected light** will turn green\nIf you enter a wrong combination, the lights will flash red for a few seconds.\n\n### High scores\n\nThe high score for the game will update once you get a sequence wrong and the game resets. The *session high score* will reset if you re-load the web browser. The *All-time high score* will only reset if you click the **Reset High Score** button in settings or clear your browsers cache\n\n**Note: None of your data will be saved online OR will be access able by anyone else**\n\n### Controlling the lights\n\nHere you can control the lights with a push of a button.\nIt will set all lights to a colour, turn them all on or all off.\n\n### Set Light Colour\nThis will allow you to control the specific HUE value of a single light. \n*The light can be selected on the left*\n\nThe hue value is a number between 0 and 55000.\n\n## Web Accessibility\n- Colour blindness\nA large problem with creating a colour memory game is that colour-blind people cannot use it. I decided to tackle this problem by indicating which button is changing during the sequence, so if you cannot distinguish colours, you'll just have to remember the order that the buttons flash!\nNowhere is colour exclusively used to show the form of a button, it always has text supporting it.\n\n- Text contrast\nText contrast is very important, it can stop a visually impaired user from using the website out right. Almost all of the text is black on a white background, which is the best contrast possible. Where text is not black-on-white i.e. on buttons, the contrast is taken in to account and is enough to meet standards.\n- Text size\nThe text size isn't as big as it could be for users who are visually impaired, but the website works exactly the same when zoomed in upon.\n\n### WCAG1.0\n- Guideline 1: No audio content included, visual assistance couldn't be given as the game wouldn't work if the user is blind,\n- Guideline 2: Colour only shows form and text is always used as well as colour.\n- Guideline 3: Bootstrap default style sheet is used\n- Guideline 4: Language is clear under explanations; very little understanding of English is needed to operate the game fully.\n- Guideline 5: All tables transform and stay together upon resizing.\n- Guideline 6: The whole website has a dynamic style.\n- Guideline 7: No changes are time-sensitive on the website.\n- Guideline 8: There are no embedded UI's.\n- Guideline 9: The website is designed to be used on any computer and browser and can work on phone sized screens too.\n- Guideline 10: The only text box is empty, however has a clear title on what it is used for.\n- Guideline 11: Template was from Bootstrap which should use W3C guidelines.\n- Guideline 12: Context is always shown to the user as indicated by the highlighted item on the search bar\n- Guideline 13: Navigation bar is clear and always accessible.\n- Guideline 14: Lay-out is clear, clean and simple.\n\n## Supported browsers\nAll browsers that can run JavaScript are supported, Chrome and Firefox have been tested and work as you can see from the video."
-    },
-    {
-        "name": "Recursion Example",
-        "shortName": "Recursion Example",
-        "icon": "cached",
-        "language": "js, javascript, HTML, css",
-        "url": "https://github.com/mbruty/portfolio"
-    }
+  {
+    "name": "Sorting Algorithm Visualiser",
+    "shortName": "Sorting Vis",
+    "icon": "assessment",
+    "description": "asdf",
+    "language": "js, javascript, react, css, HTML",
+    "url": "https://github.com/mbruty/Sorting-visualiser",
+    "image": [],
+    "info": "This program does what it says on the tin. Visualises Sorting algorithms!\n## How does it work?\nThere is a random array generated of a given length. This array contains numbers from 1 - 100.\nThe graph component is fed this array, and renders each bar, with the value set to the height % e.g an element of value 43.6 will have it's height set to 43.6% of the container.\nWhen the sort is started, the sorting algorithm is passed the 'setState' of the graph component, every time the algorithm does a swap, the graph component is fed the new array and re-renders the new array. If there is a delay specified, the algorithm will then wait for that amount of time before continuing.\n## Speed test\nThis just uses the bare sorting algorithm, without any callback or delay. A random array is generated, this array is then duplicated to each algorithm and then they're set off! Each algorithm is assigned to a new web-worker to ensure that the results aren't skewed due to any processing having to happen on the main thread. This also stops the page from becoming un-responsive. Once each algorithm has completed it's run, it talks back to the main thread to give it's result. Once all the results have been collected, the page updates to show the result ",
+    "material": true
+  },
+  {
+    "name": "URL Shortener",
+    "shortName": "URL Shortener",
+    "icon": "link",
+    "language": "js, javascript, react, css, Mongo, MongoDB, HTML",
+    "url": "https://github.com/mbruty/React-link-shortener",
+    "image": [],
+    "info": "This app does exactly that. It takes a url and a slug, stores it and re-direct's any requests from that slug to the url... But how?\nThe *domain name*/u/*slug* route triggers a request to a mongodb server to fetch the stored url for the slug.\nThe mongodb database is just used as a key/value pair database, so other services like redis could also be used or even a SQL server with one table and a column for the slug and url!\nOnce the url has been obtained, the request is then redirected to the target url.\nIf the slug isn't found, the user is forwarded to a 404 page.\nOn a POST to the back-end, the chosen slug is checked against the database to ensure it hasn't already been taken, if it hasn't the url is stored with the slug for later use.",
+    "material": true
+  },
+  {
+    "name": "Recursion Example",
+    "shortName": "Recursion Example",
+    "icon": "cached",
+    "language": "js, javascript, HTML, css",
+    "url": "https://github.com/mbruty/portfolio",
+    "info": "#maximum recursion depth exceeded",
+    "image": [],
+    "material": true
+  },
+  {
+    "name": "Starwars Guild Inspector (Example Allycodes in the read me)",
+    "shortName": "Starwars Guild Inspector",
+    "icon": "swg swg-deathstar swg-4x",
+    "littleIcon": "swg swg-deathstar swg-2x",
+    "language": "js, javascript, react, css, redis, HTML, sockets, socket.io, websockets, formik",
+    "url": "https://github.com/mbruty/swgoh-tw",
+    "image": [],
+    "info": "# SWGOH Guild Inspector\n## Example ally codes => \n\n-   979-382-945\n-   841-626-362\n-   291-422-326\n- 427-513-365\n\n## How it works?\n\n 1. You submit an ally-code, this is passed over to the api to process.\n 2. The api hit's a public api to get all the information about that ally-code (returns a list of all of the ally-codes in that guild. (This can take a few minutes due to the massive amount of traffic on the public api)\n 3. The api fetches all of the data for all of the members of that guild.\n 4. The api processes all of the information, searching each member for the 'meta' squads that they have and sorts the squads based on the highest power.\n 5. The api caches this data in a redis database for 6 hours to avoid spamming the public api.\n 6. The react app displays all of this information.\n\n## What is used?\n- Socket.io for the api (so that user-feedback can be implemented due to requests taking multiple minutes at peek times, noting I can do)\n- Redis for caching all the data\n- Express.js for the HTTP server\n- React.js for the website\n- Material-ui for most of the components\n- Sass for styling\n- Formik for the validation",
+    "material": false
+  }
 ]

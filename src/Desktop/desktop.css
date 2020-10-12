@@ -59,7 +59,7 @@
     -ms-transition: background-color 100ms linear;
 	transition: background-color 100ms linear;
 }
-.icon .material-icons{
+.icon i{
 	margin-left: 20%;
 	font-size: 3.5em;
 	text-align: center;
@@ -114,7 +114,8 @@
 .handle .chrome-btn:hover{
 	-webkit-transition: background-color 50ms linear;
     -ms-transition: background-color 50ms linear;
-    transition: background-color 50ms linear;
+		transition: background-color 50ms linear;
+		background-color: rgba(255, 255, 255, 0.2);
 }
 .handle .chrome-x .material-icons, .handle .chrome-btn .material-icons{
 	font-size: 2em;
@@ -242,7 +243,7 @@
 	transition: background-color 100ms linear;
 }
 .start-modal .right-bar .entry .material-icons,
-.search-modal .entry .material-icons {
+.search-modal .entry i {
 	padding-right: 2%;
 	font-size: 2em;
 	position: relative;

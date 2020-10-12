@@ -6,9 +6,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default class ShowProject extends Component {
   constructor(props) {
     super(props);
-    this.project = data.filter((x) => x.name === this.props.name)[0];
+    this.project = data.filter((x) => x.shortName === this.props.name)[0];
     if (!this.project) {
-      this.project = projects.filter((x) => x.name === this.props.name)[0];
+      this.project = projects.filter((x) => x.shortName === this.props.name)[0];
     }
     this.renderMD = this.renderMD.bind(this);
   }
