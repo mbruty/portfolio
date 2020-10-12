@@ -107,21 +107,13 @@ export default class ChromeWindow extends Component {
       case "AirBnb Visualisation":
         return (
           <div id="air-bnb">
-            <ShowProject
-              width={this.state.width}
-              height={this.state.height}
-              name="AirBnb Visualisation"
-            />
+            <this.RenderProject name="AirBnb Visualisation" />
           </div>
         );
       case "WinForms Social Network":
         return (
           <div id="wf-social">
-            <ShowProject
-              width={this.state.width}
-              height={this.state.height}
-              name="WinForms Social Network"
-            />
+            <this.RenderProject name="WinForms Social Network" />
           </div>
         );
       case "HUE Says":
