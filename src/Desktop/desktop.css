@@ -77,11 +77,11 @@
 .chrome-box{
 	position: absolute;
 	background-color: white;
-	width: 70%;
+	width: 50%;
 	min-width: 400px;
 	min-height: 400px;
 	max-height: 95.5%;
-	height: 800px;
+	height: 80%;
 	left: 15%;
 	top: 5%;
 	resize: both;
