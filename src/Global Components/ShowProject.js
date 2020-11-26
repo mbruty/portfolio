@@ -64,7 +64,7 @@ export default class ShowProject extends Component {
   render() {
     return (
       <div
-        className="project-container noselect"
+        className="project-container select"
         style={{ height: this.props.height - 40, width: this.props.width }}
       >
         <h1>{this.project.name}</h1>

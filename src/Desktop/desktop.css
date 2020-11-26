@@ -14,6 +14,14 @@
 									supported by Chrome, Edge, Opera and Firefox */
 }
 
+.select {
+	-webkit-touch-callout: unset; /* iOS Safari */
+	  -webkit-user-select: text; /* Safari */
+		 -moz-user-select: text; /* Old versions of Firefox */
+		  -ms-user-select: text; /* Internet Explorer/Edge */
+			  user-select: text; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+}
 .clickthrough{
 	pointer-events: none;
 }
