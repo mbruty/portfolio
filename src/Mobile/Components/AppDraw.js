@@ -46,12 +46,15 @@ export default class AppDraw extends Component {
                     className="search-entry noselect"
                     onClick={this.props.showWindow}
                   >
-                    {console.log(project)}
-                    <i id={project.name} className="material-icons noselect">
-                      {project.icon}
-                    </i>
-                    {" " +
-                      project.shortName.slice(0, maxLength) +
+                    {project.material && (
+                      <i id={project.name} className="material-icons noselect">
+                        {project.icon}
+                      </i>
+                    )}
+                    {!project.material && (
+                      <i id={project.name} className={project.icon} />
+                    )}
+                    {project.shortName.slice(0, maxLength) +
                       (project.shortName.length > maxLength ? "..." : "")}
                   </div>
                 );
@@ -87,7 +90,9 @@ export default class AppDraw extends Component {
                       {project.icon}
                     </i>
                   )}
-                  {!project.material && <i id={project.name} className={project.icon} />}
+                  {!project.material && (
+                    <i id={project.name} className={project.icon} />
+                  )}
                   {project.shortName.slice(0, maxLength) +
                     (project.shortName.length > maxLength ? "..." : "")}
                 </div>
